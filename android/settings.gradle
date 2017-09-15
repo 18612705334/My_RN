@@ -1,0 +1,3 @@
+rootProject.name = 'My_Saas'
+
+include ':app'
