@@ -1,7 +1,7 @@
 let all = '11'
 
 let setAll = (alls)=>{
-    all = all;
+    all = alls;
 }
 
 export {all, setAll};

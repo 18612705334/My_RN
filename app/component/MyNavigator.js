@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-
+import {Navigator} from 'react-native-deprecated-custom-components'
 import {
     View,
     TouchableOpacity,
-    Navigator,
     TouchableHighlight
 
 } from 'react-native';
@@ -11,7 +10,7 @@ import {
 var Platform = require('Platform');
 import RootScene from '../main/RootScene'
 import {setAll} from '../constant/AllBackLogin'
-
+import Login from '../../app/login/LoginScene'
 
 export default class MyNavigator extends Component {
 
@@ -19,8 +18,8 @@ export default class MyNavigator extends Component {
         return (
             <Navigator
                 initialRoute={{
-                    component: RootScene,
-                    name: 'rootScene'
+                    component: Login,
+                    name: 'LoginScene'
                 }}
 
                 configureScene={(route, routeStack) => {
@@ -28,11 +27,11 @@ export default class MyNavigator extends Component {
                         return Navigator.SceneConfigs.FloatFromRight;
                     }
                     return Navigator.SceneConfigs.FloatFromBottomAndroid;
-                }
-                }
+                }}
 
                 renderScene={(route, navigator) => {
                     let Component = route.component;
+                    
                     if (route.component) {
                         setAll(navigator);
                         return <Component {...route.params}
@@ -46,8 +45,6 @@ export default class MyNavigator extends Component {
                                          showModal={(value) => {
                                              this.props.showModel(value)
                                          }}
-
-
                         />
 
                     }

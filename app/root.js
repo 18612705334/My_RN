@@ -12,17 +12,13 @@ import {
 } from 'react-native';
 
 import * as WeChat from 'react-native-wechat'
-import MyNavigator from './component/MyNavigator'
-import ShowToast from './component/toast/ShowToast'
+import MyNavigator from '../app/component/MyNavigator'
+import ShowToast from '../app/component/toast/ShowToast'
 
-export default class Root extends Component {
-
-    constructor(props) {
-        super(props)
-    }
+export default class root extends Component {
 
     componentDidMount(){
-        //WeChat.registerApp('wx6211535f6243c779')
+        WeChat.registerApp('wx6211535f6243c779');
         global.iosIDFA = this.props.IDFA;
         global.phoneVersion = this.props.phoneVersion;
         global.phoneModel = this.props.phoneModel;
@@ -49,19 +45,19 @@ export default class Root extends Component {
     }
 
     showToast = (content) => {
-
-
+        this.refs.toast.changeType(ShowToast.TOAST, content);
     }
 
     showModel = (value) => {
-
-
+        this.refs.toast.showModel(value);
     }
+
 }
 
 
 const styles = StyleSheet.create({
     style_contain: {
         flex: 1,
+        backgroundColor:'white'
     }
 })
