@@ -3,6 +3,7 @@
  */
 export const BASEURL = 'http://dev.api-gateway.dycd.com/';
 
+
 /**
  * 测试地址
  */
@@ -12,7 +13,7 @@ export const BASEURL = 'http://dev.api-gateway.dycd.com/';
 /**
  * 正式地址
  */
-// export const BASEURL = 'https://gatewayapi.dycd.com/';
+//export const BASEURL = 'https://gatewayapi.dycd.com/';
 
 /**
  * 预发布地址
@@ -97,11 +98,11 @@ export const CAR_HiSTORY = BASEURL + V + 'car/searchHistory';
  */
 export const CAR_SEARCH_TOP = BASEURL + V + 'car/searchTop';
 
-
 /**
  * 获取车辆详情
  */
 export const CAR_DETAIL = BASEURL + V + 'car/detail';
+
 
 /**
  * 获取车辆配置信息
@@ -154,9 +155,99 @@ export const CAR_USER_CAR = BASEURL + V + 'user/car';
 export const CAR_STATUS = BASEURL + V + 'car/status';
 
 /**
+ * 我的车源-更新车辆发布时间
+ */
+export const CAR_REFRESH_TIME = BASEURL + V + 'car/refreshPublisherTime';
+
+/**
+ * 我的车源-删除车辆
+ */
+export const CAR_DELETE = BASEURL + V + 'car/delete';
+
+/**
+ * 我的车源-已售操作
+ */
+export const CAR_SALE = BASEURL + V + 'car/sale';
+
+// /**
+//  * 我的车源-创建已售消息
+//  */
+// export const CAR_SASS_SALED = BASEURL + 'cheshang/sass/saled';
+
+/**
+ * 我的车源-创建已售消息
+ */
+export const CAR_SASS_SALED = BASEURL + 'cheshang/sass_php/addSaledMessage';
+
+/**
  * 获取我的车源-未审核
  */
 export const CAR_PERLIST = BASEURL + V + 'car/preList';
+
+/**
+ * 创建收车任务
+ */
+export const CAR_SASS_PUBLISH = BASEURL + 'cheshang/sass/publish';
+
+/**
+ * 创建收车管理列表
+ */
+export const CAR_SASS_SELECT_LIST= BASEURL + 'cheshang/sass/selectList';
+
+/**
+ * 收车任务详情
+ */
+export const CAR_SASS_SELECT_MSG= BASEURL + 'cheshang/sass/selectMsg';
+
+/**
+ * 整备车辆任务列表
+ */
+export const CAR_CHESHANG_TASKS= BASEURL + 'cheshang/sass/tasks';
+
+/**
+ * 创建整备任务
+ */
+export const CAR_CHESHANG_PUBLISHTASK= BASEURL + 'cheshang/sass/publishTask';
+
+/**
+ * saas-发布车辆
+ */
+export const CAR_CHESHANG_PUBLISHCAR= BASEURL + 'cheshang/sass/publishCar';
+
+/**
+ * 查看整备任务
+ */
+export const CAR_CHESHANG_TASKINFO= BASEURL + 'cheshang/sass/taskInfo';
+
+/**
+ * 整备任务 - 评估师提交任务
+ */
+export const CAR_CHESHANG_PGS_EDIT_TASK= BASEURL + 'cheshang/sass/pgsEditTask';
+
+/**
+ * 整备任务 - 整备员提交任务
+ */
+export const CAR_CHESHANG_ZBY_EDIT_TASK= BASEURL + 'cheshang/sass/zbyEditTask';
+
+/**
+ * 整备任务 - 经理提交任务
+ */
+export const CAR_CHESHANG_MANAGER_EDIT_TASK= BASEURL + 'cheshang/sass/managerEditTask';
+
+/**
+ * 整备任务 - 运营专员交任务
+ */
+export const CAR_CHESHANG_YYZY_EDIT_TASK= BASEURL + 'cheshang/sass/updateTaskByyyzy';
+
+/**
+ * 获取销售员
+ */
+export const CAR_CHESHANG_GET_ALLCHILD= BASEURL + 'cheshang/sass_php/subAccountGetAllChild';
+
+/**
+ * 分享成功回调
+ */
+export const CAR_CHESHANG_SHARE_MOMENT_COUNT= BASEURL + 'cheshang/sass/shareMomentCount';
 
 /**
  * 获取登记人信息
@@ -167,6 +258,11 @@ export const GET_REGISTRANT = BASEURL + V + 'car.borrower/getRegistrants';
  * 添加登记人信息
  */
 export const ADD_REGISTRANT = BASEURL + V + 'car.borrower/addRegistrant';
+
+/**
+ * 验证车架号
+ */
+export const VIN_CHECK = BASEURL + V + 'car/checkVin';
 
 /**
  * 根据VIN获取车辆详情
@@ -217,6 +313,11 @@ export const USER_HISTORY_DELETE = BASEURL + V + "user.history/delete";//
  * 员工列表
  */
 export const USER_EMPLOYE = BASEURL + V + "user.employe/index";
+
+/**
+ * 选择的当前企业信息
+ */
+export const USER_GET_SELECT_ENTERPRISE_INFO = BASEURL + V + "user/getSelectEnterpriseInfo";
 
 /**
  * from @zhaojian
@@ -273,6 +374,13 @@ export const USER_ROLE = BASEURL + 'v1/user/role';
  * 添加||编辑员工
  **/
 export const USER_EMPLOYEE_SAVE = BASEURL + 'v1/user.employee/save';
+
+/**
+ * from @zhaojian
+ *
+ * 查看员工
+ **/
+export const USER_EMPLOYEE_VIEW = BASEURL + 'v1/user.employee/view';
 
 /**
  * from @zhaojian
@@ -347,6 +455,13 @@ export const USER_ACCOUNT_INFO = BASEURL + 'v1/user.account/info';
 /**
  * from @zhaojian
  *
+ * 获取用户功能权限
+ **/
+export const GETFUNCTIONBYTOKENENTER = BASEURL + 'v1/user/getFunctionByTokenEnter';
+
+/**
+ * from @zhaojian
+ *
  * 获取账户管理首页
  **/
 export const USER_ACCOUNT_INDEX = BASEURL + 'v1/user.account/index';
@@ -357,6 +472,20 @@ export const USER_ACCOUNT_INDEX = BASEURL + 'v1/user.account/index';
  * 获取交易流水
  **/
 export const USER_ACCOUNT_PAYLOG = BASEURL + 'v1/user.account/payLog';
+
+/**
+ * from @huangning
+ *
+ * 获取交易流水
+ **/
+export const ACCOUNT_PAYLOG = BASEURL + 'v2/user.account/payLog';
+
+/**
+ * from @zhaojian
+ *
+ * 注销员工
+ **/
+export const USER_EMPLOYEE_DESTROY = BASEURL + 'v1/user.employee/destroy';
 
 /**
  * from @zhaojian
@@ -1002,3 +1131,93 @@ export const FIRST_REPAYMENT_CONTRACT = '/api/v1/Contract/see_electron_repayment
  *  签署-扣款协议合同
  */
 export const FIRST_REPAYMENT_CONTRACT_SIGN = '//api/v1/Contract/sign_electron_repayment_contract';
+
+
+/**
+ *  form @dingyonggang
+ *  签署订单合同
+ */
+export const SIGN_ORDER_CONTRACT = BASEURL + V + 'order/signContractAll';
+
+//CRM TEST
+export const PRE = "http://10.3.10.35:8080/";
+/**
+ *  门店管理web页
+ */
+export const STORE_RECEPTION_MANAGE = PRE + "ceshi.do?mobile=15102373842";
+/**
+ *  软文中心web页
+ */
+export const SOFT_ARTICLES_CENTER = "http://saas-static.dycd.com/inc/carmarket/articleList.html";
+/**
+ *  添加潜在客户
+ */
+export const CUSTOMER_ADD_URL = BASEURL + "cheshang/customer/create";
+/**
+ *  获取待办消息数量
+ */
+export const HANDLE_COUNT = BASEURL + "cheshang/sass/handleCount";
+/**
+ *  获取系统消息或车市头条消息数量
+ */
+export const SELECT_UNREAD_MESSAGE_COUNT = BASEURL + "cheshang/sass/selectUnReadMessageCount";
+/**
+ *  待办事项、系统消息、车市头条列表数据
+ */
+export const SELECT_MSG_BY_CONTENT_TYPE = BASEURL + "cheshang/sass/selectMsgByContentType";
+/**
+ *  门店查询当前人是否存在
+ */
+export const SELECT_CUST_IF_EXIST = BASEURL + "cheshang/customer/selectCustIfExist";
+/**
+ *  每日，周，月提醒
+ */
+export const DAILY_REMINDER_RANK_LEVEL = BASEURL + "cheshang/sass/rankLevel";
+/**
+ *  每日，周，月统计
+ */
+export const DAILY_REMINDER_STATISTICS = BASEURL + "cheshang/sass/statistics";
+/**
+ *  获取潜在客户列表
+ */
+export const POTENTIAL_CUSTOMER_LISTS = BASEURL + "cheshang/customer/lists";
+//export const POTENTIAL_CUSTOMER_LISTS = PRE + "customer/querycustomerList.do";
+/**
+ *  获取潜在客户详情
+ */
+//export const POTENTIAL_CUSTOMER_DETAIL = "http://10.3.10.35:8080/customer/selectDetail.do";
+export const POTENTIAL_CUSTOMER_DETAIL = BASEURL + "cheshang/customer/selectDetail";
+/**
+ *  获取所有跟进信息
+ */
+export const SELECT_ALL_FLOW = BASEURL + "cheshang/customer/selectAllFlow";
+/**
+ *  获取当前任务信息
+ */
+export const SELECT_FLOW = BASEURL + "cheshang/customer/selectFlow";
+/**
+ *  提交当前任务信息
+ */
+export const CUSTOMER_FLOW = BASEURL + "cheshang/customer/customerFlow";
+/**
+ *  搜索潜在客户列表
+ */
+export const QUERY_CUSTOMER_BY_SEARCH_KEY = BASEURL + "cheshang/customer/querycustomerBysearchkey";
+/**
+ *  获取保有客户数据列表
+ */
+export const TENURE_PERFECT_IF_LIST = BASEURL + "cheshang/tenure_customer/tenurePerfectIfList";
+/**
+ *  获取保有客户数据详情
+ */
+export const TENURE_CAR_PEOPLE_MSG = BASEURL + "cheshang/tenure_customer/tenureCarPeopleMsg";
+/**
+ *  获取保有客户数据提交
+ */
+export const UPDATE_CAR_WELFARE = BASEURL + "cheshang/tenure_customer/updateCarWelfare";
+/**
+ *  搜索保有客户数据
+ */
+export const SELECT_BY_SEARCH = BASEURL + "cheshang/tenure_customer/selectBySearch";
+
+

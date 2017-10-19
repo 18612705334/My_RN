@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {
     AppRegistry,
-    StyleSheet,
     View,
     TouchableOpacity,
     Navigator,
@@ -13,167 +12,210 @@ import {
     Image,
     Text,
 } from "react-native";
-
 import PixelUtil from "../utils/PixelUtils";
 import * as fontAndColor from "../constant/FontAndColor";
 import MyButton from "./MyButton";
 const {width, height} = Dimensions.get('window');
 const Pixel = new PixelUtil();
-
-export default class BaseComponent extends Component{
-
-    handleBack = ()=>{
-         this.goBack();
-         return true;
+import ConsoleUtils from "../utils/ConsoleUtils";
+const Console = new ConsoleUtils();
+export default class BaseComponent extends Component {
+    /**
+     * from @zhaojian
+     *
+     * 监听回退键
+     **/
+    handleBack = () => {
+        this.backPage();
+        return true;
     }
 
-    componentDidMount(){
-        try{
-            BackAndroid.addEventListener('hardwareBackPress', this.handleBack)
-        }catch (e){
+    componentDidMount() {
+        // InteractionManager.setDeadline(500);
+        try {
+            BackAndroid.addEventListener('hardwareBackPress', this.handleBack);
+        } catch (e) {
 
-        }finally {
-            this.setState({renderPlaceHolderOnly:'loading'})
+        } finally {
+            //InteractionManager.runAfterInteractions(() => {
+            this.setState({renderPlaceholderOnly: 'loading'});
             this.initFinish();
+            // });
+        }
+
+
+    }
+
+    initFinish() {
+
+    }
+
+    toNextPage = (mProps) => {
+        const navigator = this.props.navigator;
+        if (navigator) {
+            navigator.push({
+                ...mProps
+            })
         }
     }
 
-    initFinish = ()=>{
-
+    resetRoute = (mProps)=>{
+        const navigator = this.props.navigator;
+        if (navigator){
+            navigator.immediatelyResetRouteStack([{
+                ...mProps
+            }])
+        }
     }
 
-    backPage = ()=>{
-        const navigator = this.props.navigator
-        if (navigator){
+
+
+    backPage = () => {
+        const navigator = this.props.navigator;
+        if (navigator) {
             navigator.pop();
         }
     }
 
-    backToTop = ()=>{
-        const navigator = this.props.navigator
-        if (navigator){
+    backToTop = () => {
+        const navigator = this.props.navigator;
+        if (navigator) {
             navigator.popToTop();
         }
     }
 
-    toNextPage = (mProps) =>{
-        const navigator = this.props.navigator;
-        if (navigator) {
-            navigator.push({...mProps})
-        }
+
+    showConsole = (content) => {
+        Console.showConsole(content);
     }
 
-    backToLogin = (mProps)=>{
-        const navigator = this.props.navigator;
-        if (navigator){
-            navigator.immediatelyResetRouteStack([{...mProps}])
-        }
-    }
-
-    showConsole = (content)=>{
-        Content.showConsole(content);
+    componentWillUnmount() {
     }
 
     allRefreshParams = {
-        buttonType:MyButton.TEXTBUTTTON,
-        parentStyle:{
-            height:Pixel.getPixel(40),
-            width:Pixel.getPixel(140),
-            justifyContent:'center',
-            alignItems:'center',
-            backgroundColor:fontAndColor.COLORB0,
-            marginTop:Pixel.getPixel(66)
+        buttonType: MyButton.TEXTBUTTON,
+        parentStyle: {
+            height: Pixel.getPixel(40),
+            width: Pixel.getPixel(140),
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: fontAndColor.COLORB0,
+            marginTop: Pixel.getPixel(66)
         },
-
-        childStyle:{
-            fontSize:Pixel.getFontPixel(fontAndColor.BUTTONFONT30),
-            color:'#fffff',
+        childStyle: {
+            fontSize: Pixel.getFontPixel(fontAndColor.BUTTONFONT30),
+            color: '#ffffff',
         },
         opacity: 0.8,
         content: '刷新',
         mOnPress: () => {
             this.allRefresh();
         }
-
     }
-
     allRefresh = () => {
 
     }
 
-
-    loadView=()=>{
+    loadView = () => {
         let view;
-        let marginTop = 0;
-
+        let margintop = 0;
         if (this.state.loadingMarginTop) {
             margintop = this.state.loadingMarginTop;
         }
-
-        if (this.state.renderPlaceHolderOnly == 'blank'){
+        if (this.state.renderPlaceholderOnly == 'blank') {
             view = <View/>
-        }else if(this.state.renderPlaceHolderOnly == 'loading'){
-            view = <View style = {styles.style_load_view}>
-                <Image style = {styles.style_load_image} soruce = {require('../../image/loading.gif')}/>
-                <Text allowFontScaling = {false} style ={styles.style_load_text}>加载中...</Text>
+        } else if (this.state.renderPlaceholderOnly == 'loading') {
+            view = <View style={{flex: 1, alignItems: 'center'}}>
+                <Image
+                    style={{
+                        width: Pixel.getPixel(150),
+                        height: Pixel.getPixel(159),
+                        marginTop: Pixel.getTitlePixel(189) - margintop
+                    }}
+                    source={require('../../image/loading.gif')}/>
+                <Text allowFontScaling={false}
+                      style={{
+                          color: fontAndColor.COLORA0,
+                          fontSize: Pixel.getFontPixel(fontAndColor.BUTTONFONT30),
+                          marginTop: Pixel.getPixel(32)
+                      }}>
+                    加载中......
+                </Text>
             </View>
-
-        }else if (this.state.renderPlaceHolderOnly == 'error'){
-            view = <View style = {styles.style_load_view}>
-                <Image styel = {styles.style_load_image} source = {require('../../image/loadingError.png')}/>
-                <Text allowFontScaling = {false}  style = {styles.style_load_text}>网络错误</Text>
-                <Text allowFontScaling = {false}  style = {styles.style_load_text}>当网络环境较差</Text>
+        } else if (this.state.renderPlaceholderOnly == 'error') {
+            view = <View style={{flex: 1, alignItems: 'center'}}>
+                <Image
+                    style={{
+                        width: Pixel.getPixel(121),
+                        height: Pixel.getPixel(163),
+                        marginTop: Pixel.getTitlePixel(85 + 64) - margintop
+                    }}
+                    source={require('../../image/loadingError.png')}/>
+                <Text allowFontScaling={false}
+                      style={{
+                          color: fontAndColor.COLORA0, fontSize: Pixel.getFontPixel(fontAndColor.BUTTONFONT30),
+                          marginTop: Pixel.getPixel(27)
+                      }}>
+                    网络错误
+                </Text>
+                <Text allowFontScaling={false}
+                      style={{
+                          color: fontAndColor.COLORA1, fontSize: Pixel.getFontPixel(fontAndColor.LITTLEFONT28),
+                          marginTop: Pixel.getPixel(10)
+                      }}>
+                    当前网络环境较差，请刷新重试
+                </Text>
                 <MyButton {...this.allRefreshParams} />
             </View>
-        }else {
-            view = <View style = {styles.style_load_view}>
-                <Image styel = {styles.style_load_image} source = {require('../../image/noData.png')}/>
-                <Text allowFontScaling = {false} style ={styles.style_load_text}>暂无数据</Text>
+        } else {
+            view = <View style={{flex: 1, alignItems: 'center'}}>
+                <Image
+                    style={{
+                        width: Pixel.getPixel(121),
+                        height: Pixel.getPixel(163),
+                        marginTop: Pixel.getTitlePixel(85 + 64) - margintop
+                    }}
+                    source={require('../../image/noData.png')}/>
+                <Text allowFontScaling={false}
+                      style={{
+                          color: fontAndColor.COLORA0, fontSize: Pixel.getFontPixel(fontAndColor.BUTTONFONT30),
+                          marginTop: Pixel.getPixel(27)
+                      }}>
+                    暂无数据
+                </Text>
+                <Text allowFontScaling={false}
+                      style={{
+                          color: fontAndColor.COLORA1, fontSize: Pixel.getFontPixel(fontAndColor.LITTLEFONT28),
+                          marginTop: Pixel.getPixel(10)
+                      }}>
+                </Text>
             </View>
         }
         return view;
+
     }
 
-    loadingView=()=>{
+    loadingView = () => {
         let view;
-
-        if (this.state.loading == true){
-            view = <View style={styles.style_loading_view}>
-                    <Image style = {{width:60, height:60}} srouce = {require('../../image/setDataLoading.gif')} />
-            </View>
-
-        }else {
+        if (this.state.loading == true) {
+            view = <TouchableWithoutFeedback onPress={() => {
+            }}>
+                <View
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        position: 'absolute',
+                        width: width,
+                        height: height,
+                    }}>
+                    <Image style={{width: 60, height: 60}}
+                           source={require('../../image/setDataLoading.gif')}/>
+                </View>
+            </TouchableWithoutFeedback>
+        } else {
             view = null;
         }
         return view;
-
     }
-
 }
-
-const styles = StyleSheet.create({
-
-    style_loading_view:{
-        justifyContent:'center',
-        alignItems:'center',
-        flex:1,
-        position: 'absolute',
-        width: width,
-        height: height,
-    },
-    style_load_view:{
-        flex:1,
-        alignItems:'center',
-    },
-    style_load_image:{
-        width:Pixel.getPixel(150),
-        height:Pixel.getPixel(159),
-        marginTop:Pixel.getPixel(189)
-    },
-    style_load_text:{
-        color:fontAndColor.COLORA0,
-        fontSize:Pixel.getFontPixel(fontAndColor.BUTTONFONT30),
-        marginTop:Pixel.getPixel(30),
-    }
-
-})

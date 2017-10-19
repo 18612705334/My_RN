@@ -23,7 +23,7 @@ export default class Search extends Component {
         leftIconShow: true,
         clearValue: false,
         inputPlaceHolder: '请输入用户名',
-        leftIconUri: '../../images/login/phone.png',
+        leftIconUri: '../../image/login/phone.png',
         keyboardType: null,
     }
 

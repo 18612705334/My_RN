@@ -7,13 +7,16 @@ export  default class StorageUtil{
 
     static ERRORCODE = '236407'
 
-    static  mSetItem(key, value){
+    static  mSetItem(key, value, callBack){
         AsyncStorage.setItem(key, value, (errs)=>{
             if (errs) {
                 // console.log('存储错误');
             }
             if (!errs) {
                 // console.log('存储无误');
+                if(callBack){
+                    callBack();
+                }
             }
         })
     }

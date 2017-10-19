@@ -11,6 +11,9 @@ var Platform = require('Platform');
 import RootScene from '../main/RootScene'
 import {setAll} from '../constant/AllBackLogin'
 import Login from '../../app/login/LoginScene'
+import loginResetPwd from '../login/LoginFailPwd'
+import gesture from '../login/SetLoginPwdGesture'
+import company from '../main/AllSelectCompanyScene'
 
 export default class MyNavigator extends Component {
 
@@ -18,8 +21,8 @@ export default class MyNavigator extends Component {
         return (
             <Navigator
                 initialRoute={{
-                    component: Login,
-                    name: 'LoginScene'
+                    component: company,
+                    name: 'company'
                 }}
 
                 configureScene={(route, routeStack) => {
@@ -43,7 +46,7 @@ export default class MyNavigator extends Component {
                                          }}
 
                                          showModal={(value) => {
-                                             this.props.showModel(value)
+                                             this.props.showModal(value)
                                          }}
                         />
 

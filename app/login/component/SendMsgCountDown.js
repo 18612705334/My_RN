@@ -35,21 +35,49 @@ export default class SendMsgCountDown extends Component{
     }
 
     onSendPress=()=>{
-        this.props.callBackSms();
-
+        this.newTime = (new Date()).valueOf();
+        if ((this.newTime - this.oldTime)>2000){
+            this.oldTime = this.newTime;
+            if (this.countTime == TIME){
+                this.props.callBackSms()
+            }
+        }
     }
 
     startCountDown = ()=>{
-        if (!this.state.countDown){
+        if (!this.state.countDown && this.timer == null){
+            this.timer = setInterval(()=>{
+                if(this.countTime <= 0){
+                    this.setState({
+                        countDown:false,
+                        value:'获取验证码'
+                    })
+                }else {
+
+                    this.setState({
+                        value: --this.countTime+'S后重发',
+                    })
+                }
+            },(1000))
+
             this.setState({
                 countDown:true,
             })
 
-        }else {
-            console.log('正在倒计时');
         }
 
     }
+
+    endCountDown = ()=>{
+        if(this.timer != null){
+            clearInterval(this.timer);
+            this.timer == null;
+        }
+        this.countTime =TIME;
+    }
+
+
+
 
     render() {
         return (

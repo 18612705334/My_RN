@@ -92,7 +92,7 @@ class Toast extends Component {
         return (
             <View style={{flex: 1, overflow: 'hidden'}}>
                 {
-                    this.state.model ?
+                    this.state.modal ?
 
                         <View style={{flex: 1, overflow: 'hidden', justifyContent: 'center', alignItems: 'center'}}>
                             <Image style={{width: 60, height: 60}}
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 5,
         borderRadius: 5,
-        bottom: 100,
+        //bottom: 100,
         position:'absolute'
     },
 

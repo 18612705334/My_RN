@@ -73,7 +73,7 @@ export default class NavigationBar extends PureComponent{
                             content = {this.props.leftImage}
                             parentStyle = {styles.buttonStyle}
                             childStyle = {[styles.leftImageStyle]}
-
+                            mOnPress = {this.props.leftImageCallBack}
                         />
                         :null
 
@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
         paddingTop:Pixel.getTitlePixel(20),
         justifyContent:'center',
         backgroundColor:FontAndColor.COLORB0,
+        //alignItems:'center'
     },
     style_android_navi_bar:{
         height:Pixel.getTitlePixel(64),
@@ -140,7 +141,6 @@ const styles = StyleSheet.create({
         textAlign:'center',
         flex:1,
         paddingTop:Pixel.getPixel(10),
-
     },
 
     leftTextStyle:{

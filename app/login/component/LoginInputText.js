@@ -104,11 +104,17 @@ export default class LoginInputText extends Component{
     }
 
     getInputTextValue = ()=>{
-        return this.refs.inputText.value;
+        return this.state.values;
+    }
+
+    setInputTextValue = (value)=>{
+        this.setState({
+            values : value
+        })
     }
 
 
-    startCountDown = ()=>{
+    _startCountDown = ()=>{
         if(this.props.rightButton){
             this.refs.sendMms.startCountDown()
         }else{

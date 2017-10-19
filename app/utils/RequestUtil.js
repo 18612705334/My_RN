@@ -33,6 +33,7 @@ const request = (url, method, params, backToLogin)=>{
             if (data.code === 1){
                 token = data.result;
             }
+            //token = 'f435995d2c7a5d860b308ff7ab6dc6e2';
 
             let device_code = '';
             if (Platform.OS === 'android') {  //设备类型
@@ -41,7 +42,7 @@ const request = (url, method, params, backToLogin)=>{
                 device_code = 'dycd_platform_ios';
             }
 
-            url = url+'?token='+token+'&device_code='+device_code+'&'+body;
+            url = url+'?token='+token+'&device_code='+device_code + '&version='+StorageKeyNames.VERSON_CODE+'&'+body;
             console.log(url);
             fetch(url, {method, body}).then((response)=>{
                 if (response.ok){
@@ -55,9 +56,9 @@ const request = (url, method, params, backToLogin)=>{
             }).then((responseJsonData)=>{
                 if(isOk){
                     for(let key of Object.keys(params)){
-                        console.log(key+'==='+params[ke])
+                        console.log(key+'==='+params[key])
                     }
-                    console.log('success');
+                    console.log(responseJsonData)
 
                     if (responseJsonData.code === 1){
                         resolve({mjson:responseJsonData, mycode:1})

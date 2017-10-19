@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react'
+import React, {Component, PureComponent, PropTypes} from 'react'
 import {
     View,
     TouchableOpacity,
@@ -14,6 +14,27 @@ export default class MyButton extends PureComponent{
         this.oldTime = 0;
         this.newTime = 10000;
     }
+
+
+    static defaultProps ={
+
+        opacity:1,
+        content:'按钮',
+        buttonType:MyButton.TEXTBUTTON
+    }
+
+    static propTypes = {
+        parentStyle:PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+        childStyle:PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+        opacity:PropTypes.number,
+        //content:PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+        mOnPress:PropTypes.func,
+        buttonType:PropTypes.string,
+
+    }
+
+
+
 
     static TEXTBUTTON = "textbutton";
     static IMAGEBUTTON = "imagebutton";

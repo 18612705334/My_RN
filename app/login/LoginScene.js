@@ -24,7 +24,12 @@ import {request} from "../utils/RequestUtil";
 import * as AppUrls from "../constant/appUrls";
 import MyButton from '../component/MyButton'
 import LoginFailSmsYes from "./LoginFailSmsYes";
-
+import md5 from 'react-native-md5';
+import StorageUtil from "../utils/StorageUtil";
+import * as StorageKeyNames from "../constant/storageKeyNames";
+import LoginGesture from "./LoginGesture";
+import SetLoginPwdGesture from "./SetLoginPwdGesture";
+import Register from './Register';
 
 var Pixel = new PixelUtil();
 var Dimensions = require('Dimensions');
@@ -32,6 +37,11 @@ var {width, height} = Dimensions.get('window');
 var Platform = require('Platform')
 var imgSrc: '';
 var imgSid: '';
+var userNames=[];
+let andriodPhoneVersion = '';
+
+
+
 
 export default class LoginScene extends BaseComponent {
 
@@ -44,11 +54,39 @@ export default class LoginScene extends BaseComponent {
             value: '',
         }
 
-
     }
 
+
+    componentDidMount(){
+        super.componentDidMount();
+        if (Platform.OS === 'andriod'){
+            NativeModules.VinScan.getPhoneVersion((version)=>{
+                andriodPhoneVersion = version;
+            })
+        }
+    }
+
+
+    initFinish = ()=>{
+        StorageUtil.mGetItem(StorageKeyNames.USERNAME, (data)=>{
+            if(data.code == 1 && data.result != null){
+                userNames = data.result.split(',')
+            }
+        })
+        this.getVerifyCode();
+    }
+
+    setLoginGesture={
+        name:'SetLoginPwdGesture',
+        component:SetLoginPwdGesture,
+        params:{
+            from:'login'
+        }
+    }
+
+
     ///获取图形验证码
-    verifyCode = () => {
+    getVerifyCode = () => {
         this.refs.loginVerifyCode.loadingState(true);
         let maps = {}
         request(AppUrls.IDENTIFYING, 'Post', maps).then((response) => {
@@ -83,13 +121,23 @@ export default class LoginScene extends BaseComponent {
 
         if (userName == '') {
             this.props.showToast("请输入正确的用户名");
-        } else if (typeof(verifyCode) == 'undefine' || verifyCode == '') {
-            this.props.showToast('验证码不能为空')
+        } else if (typeof(verifyCode) == 'undefined' || verifyCode == '') {
+            this.props.showToast('验证码不能为空');
         } else {   //发起请求
+
+            let device_code = '';
+            if (Platform.OS === 'android') {
+                device_code = 'dycd_platform_android';
+            } else {
+                device_code = 'dycd_platform_ios';
+            }
+
             let maps = {
+                device_code: device_code,
                 img_sid: imgSid,
                 phone: userName,
-                type: '2'
+                type: '2',
+                img_code:verifyCode,
             }
 
             this.setState({
@@ -103,7 +151,7 @@ export default class LoginScene extends BaseComponent {
                 })
 
                 if (response.mycode == '1') {
-                    this.ref.loginSmsCode.startCountDown()
+                    this.refs.loginSmsCode._startCountDown()
                 } else {
                     this.props.showToast(response.mjson.msg + '');
                 }
@@ -117,7 +165,7 @@ export default class LoginScene extends BaseComponent {
                 if (error.mycode == -300 || error.mycode == -500) {
                     this.props.showToast('获取验证码失败')
                 } else if (error.mycode == 7040012) {
-                    this.verifyCode();
+                    this.getVerifyCode();
                     this.props.showToast(error.mjson.msg + '')
                 } else {
                     this.props.showToast(error.mjson.msg + '')
@@ -128,8 +176,232 @@ export default class LoginScene extends BaseComponent {
     }
 
     login = () => {
+        let userName = this.refs.loginUsername.getInputTextValue();
+        let passWord = this.refs.loginPassword.getInputTextValue();
+        let verifyCode = this.refs.loginVerifyCode.getInputTextValue();
+        let smsCode = this.refs.loginSmsCode.getInputTextValue();
+
+        if (userName == '' || userName.length != 11){
+            this.props.showToast('请输入正确的用户名'); return;
+        }
+        if (typeof (passWord) == 'undefined' || passWord == ''){
+            this.props.showToast('密码不能为空'); return;
+        }
+        if (passWord.length<6){
+            this.props.showToast('密码必须为6~16位'); return;
+        }
+        if (typeof (verifyCode) == 'undefined' || verifyCode == ''){
+            this.props.showToast('验证码不能为空'); return;
+        }
+        if (typeof (smsCode) == 'undefined'|| smsCode == ''){
+            this.props.showToast('短信验证码不能为空'); return;
+        }
+
+        let device_code = '';
+        let device_type = '';
 
 
+        if (Platform.OS === 'andriod'){
+            device_code = 'dycd_platform_andriod'
+            device_type = andriodPhoneVersion
+        }else {
+            device_code = 'dycd_platform_ios'
+            device_type = 'phoneVersion=' + phoneVersion + ',phoneModel='+phoneModel+',appVersion='+appVersion;
+        }
+
+        let maps = {
+            device_code:device_code,
+            code:smsCode,
+            login_type:2,
+            phone:userName,
+            pwd:md5.hex_md5(passWord),
+            device_type:device_type,
+        }
+
+        this.setState({
+            loading:true
+        })
+
+        request(AppUrls.LOGIN, 'POST', maps).then((response)=>{
+            try{
+                if (Platform.OS === 'andriod'){
+                    NativeModules.GrowingIOModule.setCS1('user_id', userName)
+                }else {
+
+                }
+                this.setState({loading:false})
+
+                this.props.showToast('登录成功 哈哈')
+                if(response.mjson.data.user_level == 2 || response.mjson.data.user_level == 1){   //1和2表示什么
+                    if(response.mjson.data.enterprise_list == []|| response.mjson.data.enterprise_list == ''){
+                        this.props.showToast("您的账号未绑定企业");
+                    }else{
+                        StorageUtil.mSetItem(StorageKeyNames.LOGIN_TYPE, '2');
+                        StorageUtil.mGetItem(StorageKeyNames.USERNAME, (data)=>{
+                            if(data.code==1){
+                                if (data.result == null|| data.result == ''){
+                                    StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName);
+                                }else if (data.result.indexOf(userName) == -1){
+                                    StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName+','+data.result)
+                                }else if(data.result == userName){
+                                }else {
+                                    let names;
+                                    if (data.result.indexOf(userName+',') == -1){
+                                        if(data.result.indexOf(','+ userName) == -1){
+                                            name = data.result.replace(userName, '')
+                                        }else {
+                                            names = data.result.replace(','+ userName, '')
+                                        }
+                                    }else {
+                                        names = data.result.replace(userName+'', '')
+                                    }
+                                    StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName+','+names);
+
+                                }
+                            }
+                        })
+
+                        StorageUtil.mSetItem(StorageKeyNames.USER_INFO, JSON.stringify(response.mjson.data));
+                        // 保存用户信息
+                        StorageUtil.mSetItem(StorageKeyNames.BASE_USER_ID, response.mjson.data.base_user_id + "");
+                        StorageUtil.mSetItem(StorageKeyNames.ENTERPRISE_LIST, JSON.stringify(response.mjson.data.enterprise_list));
+                        StorageUtil.mSetItem(StorageKeyNames.HEAD_PORTRAIT_URL, response.mjson.data.head_portrait_url + "");
+                        StorageUtil.mSetItem(StorageKeyNames.IDCARD_NUMBER, response.mjson.data.idcard_number + "");
+                        StorageUtil.mSetItem(StorageKeyNames.PHONE, response.mjson.data.phone + "");
+                        StorageUtil.mSetItem(StorageKeyNames.REAL_NAME, response.mjson.data.real_name + "");
+                        StorageUtil.mSetItem(StorageKeyNames.TOKEN, response.mjson.data.token + "");
+                        StorageUtil.mSetItem(StorageKeyNames.USER_LEVEL, response.mjson.data.user_level + "");
+
+                        StorageUtil.mGetItem(response.mjson.data.phone +'', (data)=>{
+                            if (data.code == 1){
+                                if(data.result != null){
+                                    this.loginPage({
+                                        name:'LoginGesture',
+                                        component:LoginGesture,
+                                        params:{from:'RootScene'}
+                                    })
+                                    StorageUtil.mSetItem(StorageKeyNames.ISLOGIN, 'true');
+                                }else {
+                                    this.loginPage(this.setLoginGesture)
+                                }
+                            }
+
+
+                        })
+
+
+                    }
+
+
+
+
+                }else {
+
+                    // 保存用户登录状态
+                    StorageUtil.mSetItem(StorageKeyNames.LOGIN_TYPE, '2');
+                    // 保存登录成功后的用户信息
+                    StorageUtil.mGetItem(StorageKeyNames.USERNAME, (data) => {
+                        if (data.code == 1) {
+                            if (data.result == null || data.result == "") {
+                                StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName);
+                            } else if (data.result.indexOf(userName) == -1) {
+                                StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName + "," + data.result);
+                            } else if (data.result == userName) {
+                            } else {
+                                let names;
+                                if (data.result.indexOf(userName + ",") == -1) {
+                                    if (data.result.indexOf("," + userName) == -1) {
+                                        names = data.result.replace(userName, "")
+                                    } else {
+                                        names = data.result.replace("," + userName, "")
+                                    }
+                                } else {
+                                    names = data.result.replace(userName + ",", "")
+                                }
+                                StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName + "," + names);
+                            }
+                        }
+                    })
+
+                    StorageUtil.mSetItem(StorageKeyNames.USER_INFO, JSON.stringify(response.mjson.data));
+                    // 保存用户信息
+                    StorageUtil.mSetItem(StorageKeyNames.BASE_USER_ID, response.mjson.data.base_user_id + "");
+                    StorageUtil.mSetItem(StorageKeyNames.ENTERPRISE_LIST, JSON.stringify(response.mjson.data.enterprise_list));
+                    StorageUtil.mSetItem(StorageKeyNames.HEAD_PORTRAIT_URL, response.mjson.data.head_portrait_url + "");
+                    StorageUtil.mSetItem(StorageKeyNames.IDCARD_NUMBER, response.mjson.data.idcard_number + "");
+                    StorageUtil.mSetItem(StorageKeyNames.PHONE, response.mjson.data.phone + "");
+                    StorageUtil.mSetItem(StorageKeyNames.REAL_NAME, response.mjson.data.real_name + "");
+                    StorageUtil.mSetItem(StorageKeyNames.TOKEN, response.mjson.data.token + "");
+                    StorageUtil.mSetItem(StorageKeyNames.USER_LEVEL, response.mjson.data.user_level + "");
+                    StorageUtil.mGetItem(response.mjson.data.phone + "", (data) => {
+                        if (data.code == 1) {
+                            if (data.result != null) {
+                                // if (response.mjson.data.user_level == 2) {
+                                //     if (response.mjson.data.enterprise_list[0].role_type == '2') {
+                                this.loginPage({
+                                    name: 'LoginGesture',
+                                    component: LoginGesture,
+                                    params: {from: 'RootScene'}
+                                })
+                                //     } else {
+                                //         this.loginPage(this.loginSuccess)
+                                //     }
+                                // } else {
+                                //     this.loginPage(this.loginSuccess)
+                                // }
+                                StorageUtil.mSetItem(StorageKeyNames.ISLOGIN, 'true');
+                            } else {
+                                this.loginPage(this.setLoginGesture)
+                            }
+                        }
+                    })
+
+
+                }
+
+
+            }catch (e){
+
+                this.props.showToast('数据错误');
+
+
+            }finally {
+
+            }
+
+
+
+
+        }, (error)=>{
+
+            this.setState({
+                loading:false
+            })
+
+            this.setState({
+                loading: false,
+            });
+            if (error.mycode == -300 || error.mycode == -500) {
+                this.props.showToast("登录失败");
+            } else if (error.mycode == 7040004) {
+                this.getVerifyCode();
+                this.props.showToast(error.mjson.msg + "");
+            } else {
+                this.props.showToast(error.mjson.msg + "");
+            }
+            // 保存用户登录状态
+            StorageUtil.mSetItem(StorageKeyNames.ISLOGIN, 'false');
+
+        })
+
+    }
+
+
+    loginPage = (mProps)=>{
+        const navigator = this.props.navigator;
+        if (navigator){
+            navigator.immediatelyResetRouteStack([{...mProps}])
+        }
     }
 
     render() {
@@ -151,11 +423,13 @@ export default class LoginScene extends BaseComponent {
                         rightImageShow={false}
                         centerText='登录'
                         rightText='注册'
-                        lefttextcallback={this.backPage}
-                        righttextcallback={() => {
+                        leftImageCallBack={this.backPage}
+                        rightTextCallBack={() => {
                             this.toNextPage({
                                 // 去注册
-
+                                component:Register,
+                                name:'Register',
+                                params:{}
                             })
                         }}
                     />
@@ -186,12 +460,12 @@ export default class LoginScene extends BaseComponent {
                             viewStytle={styles.itemStyel}
                         />
                         <LoginInputText
-                            ref="loginVerifyCode"
+                            ref='loginVerifyCode'
                             textPlaceholder={'请输入验证码'}
                             leftIconUri={require('./../../image/login/virty.png')}
                             viewStyle={styles.itemStyle}
                             keyboardType={'number-pad'}
-                            rightIconClick={this.verifyCode}
+                            rightIconClick={this.getVerifyCode}
                             rightIconSource={this.state.verifyCode ? this.state.verifyCode : null}
                             rightIconStyle={{width: Pixel.getPixel(100), height: Pixel.getPixel(32)}}
                         />
@@ -214,7 +488,7 @@ export default class LoginScene extends BaseComponent {
                         content='登录'
                         parentStyle={styles.loginButtonStyle}
                         childStyle={styles.loginButtonTextStyle}
-                        myOnPress={this.login}
+                        mOnPress={this.login}
                     />
 
 

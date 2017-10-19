@@ -34,8 +34,8 @@ export default class root extends Component {
                     showToast={(content) => {
                         this.showToast(content)
                     }}
-                    showModel = {(value)=>{
-                        this.showModel(value)
+                    showModal = {(value)=>{
+                        this.showModal(value)
                     }}
                 />
                 <ShowToast ref='toast' msg = {''} />
@@ -48,8 +48,8 @@ export default class root extends Component {
         this.refs.toast.changeType(ShowToast.TOAST, content);
     }
 
-    showModel = (value) => {
-        this.refs.toast.showModel(value);
+    showModal = (value) => {
+        this.refs.toast.showModal(value);
     }
 
 }

@@ -50,6 +50,20 @@ export default class ShowToast extends PureComponent{
         }
     }
 
+    showModal=(value)=>{
+        if (value){
+            this.setState({
+                height:height
+            })
+        }else {
+            this.setState({
+                height:0
+            })
+        }
+        this.refs.toast.openLoading(value);
+
+    }
+
 
     render(){
         return (
