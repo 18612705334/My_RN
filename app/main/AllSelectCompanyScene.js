@@ -98,7 +98,7 @@ export default class AllSelectCompanyScene extends BaseComponent {
                     <Image style={styles.row_icon} source={require('../../image/financeImages/companyIcon.png')}/>
                     <View style={styles.row_text_container}>
                         <Text allowFontScaling={false} style = {styles.row_company_name}>{names}</Text>
-                        <Text allowFontScaling={false} style = {styles.row_credit}>{data.is_done_credit == '1' ? '授信额度' + movie.credit_mny / 10000 + '万' : '未完成授信'}</Text>
+                        <Text allowFontScaling={false} style = {styles.row_credit}>{data.is_done_credit == '1' ? '授信额度' + data.credit_mny / 10000 + '万' : '未完成授信'}</Text>
                     </View>
 
                     <Image style={styles.row_right_indicator}
@@ -140,11 +140,13 @@ export default class AllSelectCompanyScene extends BaseComponent {
                 })
 
             }else{  // 未完成授信
-
-
                 this.props.showModal(true);
 
-                request(Urls.CONTRACT_APPLYPLSEAL, 'POST', {}).then((response)=>{
+                let maps = {
+
+                };
+
+                request(Urls.CONTRACT_APPLYPLSEAL, 'Post', maps).then((response)=>{
                     this.props.showModal(false)
                     StorageUtil.mSetItem(StorageKeyNames.LOAN_SUBJECT, JSON.stringify(movie) + "");
                     this.resetRoute({name:'MainPage',component:MainPage,params:{}});
@@ -203,7 +205,7 @@ export default class AllSelectCompanyScene extends BaseComponent {
     _renderPlaceholderView = () => {
         return (
             <View
-                style={{flex: 1, backgroundColor: fontAndColor.COLORA3}}
+                style={{flex: 1, backgroundColor: fontAndColor.THEME_BACKGROUND_COLOR}}
             >
 
                 <NavigationBar
@@ -221,7 +223,7 @@ export default class AllSelectCompanyScene extends BaseComponent {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: fontAndColor.COLORA3,
+        backgroundColor: fontAndColor.THEME_BACKGROUND_COLOR,
     },
 
     row_container: {

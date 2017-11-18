@@ -114,14 +114,14 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         paddingTop:Pixel.getTitlePixel(20),
         justifyContent:'center',
-        backgroundColor:FontAndColor.COLORB0,
+        backgroundColor:FontAndColor.NAVI_BAR_COLOR,
         //alignItems:'center'
     },
     style_android_navi_bar:{
         height:Pixel.getTitlePixel(64),
         flexDirection:'row',
         justifyContent:'center',
-        backgroundColor:FontAndColor.COLORB0,
+        backgroundColor:FontAndColor.NAVI_BAR_COLOR,
     },
 
     leftImageStyle: {
@@ -150,14 +150,14 @@ const styles = StyleSheet.create({
         paddingRight: Pixel.getPixel(15),
         paddingTop: Pixel.getPixel(5),
         paddingBottom: Pixel.getPixel(5),
-        color: FontAndColor.COLORA3,
+        color: FontAndColor.THEME_BACKGROUND_COLOR,
         width: Pixel.getPixel(100),
     },
 
     rightTextStyle:{
         width:Pixel.getPixel(100),
         fontSize:Pixel.getFontPixel(FontAndColor.BUTTONFONT),
-        color:FontAndColor.COLORA3,
+        color:FontAndColor.THEME_BACKGROUND_COLOR,
         textAlign:'right',
         paddingRight:Pixel.getPixel(15),
         paddingTop:Pixel.getPixel(15),

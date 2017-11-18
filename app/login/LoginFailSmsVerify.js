@@ -245,7 +245,7 @@ export default  class LoginFailSmsVerify extends BaseComponent{
                     show: false,
                 });
             }}>
-                <View style={{flex: 1, backgroundColor: FontAndColor.COLORA3}}>
+                <View style={{flex: 1, backgroundColor: FontAndColor.THEME_BACKGROUND_COLOR}}>
                     <NavigationBar
                         leftImageShow={false}
                         leftTextShow={true}
@@ -339,7 +339,7 @@ export default  class LoginFailSmsVerify extends BaseComponent{
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:FontAndColor.COLORA3,
+        backgroundColor:FontAndColor.THEME_BACKGROUND_COLOR,
         flex:1,
         alignItems:'center'
     },
@@ -353,14 +353,14 @@ const styles = StyleSheet.create({
     buttonStyle: {
         height: Pixel.getPixel(44),
         width: width - Pixel.getPixel(30),
-        backgroundColor: FontAndColor.COLORB0,
+        backgroundColor: FontAndColor.NAVI_BAR_COLOR,
         marginTop: Pixel.getPixel(50),
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: Pixel.getPixel(4),
     },
     buttonTextStyle: {
-        color: FontAndColor.COLORA3,
+        color: FontAndColor.THEME_BACKGROUND_COLOR,
         fontSize: Pixel.getFontPixel(FontAndColor.BUTTONFONT)
     },
 

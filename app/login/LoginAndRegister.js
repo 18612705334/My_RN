@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         borderColor:'white',
         borderWidth:Pixel.getPixel(1),
         fontSize: Pixel.getFontPixel(18),
-        color: FontAndColor.COLORA3,
+        color: FontAndColor.THEME_BACKGROUND_COLOR,
         textAlign:'center',
         textAlignVertical:'bottom',  // 只支持Android
         paddingTop:Pixel.getPixel(12)

@@ -630,7 +630,7 @@ export default class Register extends BaseComponent {
 const styles = StyleSheet.create({
     container_view: {
         flex: 1,
-        backgroundColor: FontAndColor.COLORA3,
+        backgroundColor: FontAndColor.THEME_BACKGROUND_COLOR,
     },
 
     separator_container: {
@@ -678,7 +678,7 @@ const styles = StyleSheet.create({
     commitButton:{
         marginVertical:35,
         marginHorizontal:15,
-        backgroundColor:FontAndColor.COLORB0,
+        backgroundColor:FontAndColor.NAVI_BAR_COLOR,
         justifyContent:'center',
         alignItems:'center',
         height: 44,

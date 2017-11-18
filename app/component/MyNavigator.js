@@ -14,6 +14,11 @@ import Login from '../../app/login/LoginScene'
 import loginResetPwd from '../login/LoginFailPwd'
 import gesture from '../login/SetLoginPwdGesture'
 import company from '../main/AllSelectCompanyScene'
+import workbanch from '../main/WorkBenchScene'
+import finance from '../main/FinanceScene'
+import mine from '../main/MineScene'
+import search from '../carSource/CarSeekScene'
+import message from '../message/MessageListScene'
 
 export default class MyNavigator extends Component {
 
@@ -21,8 +26,11 @@ export default class MyNavigator extends Component {
         return (
             <Navigator
                 initialRoute={{
-                    component: company,
-                    name: 'company'
+                     // component: RootScene,
+                     // name: 'RootScene',
+                    component: message,
+                    name: 'message'
+
                 }}
 
                 configureScene={(route, routeStack) => {

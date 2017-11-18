@@ -15,9 +15,9 @@ export const MARKFONT22 = 11;
 export const COLORA0 = "#000000";
 export const COLORA1 = "#9e9e9e";
 export const COLORA2 = "#90a1b5";
-export const COLORA3 = "#f0eff5";
+export const THEME_BACKGROUND_COLOR = "#f0eff5";   //  export const COLORA3 = "#f0eff5";
 export const COLORA4 = "#d8d8d8";
-export const COLORB0 = "#05c5c2";
+export const NAVI_BAR_COLOR = "#05c5c2";  //export const COLORB0 = "#05c5c2";
 export const COLORB1 = "#3ac87e";
 export const COLORB2 = "#fa5741";
 export const COLORB3 = "#ffbd2f";
@@ -26,7 +26,5 @@ export const COLORB5 = "#69dcda";
 export const COLORB6 = "#fff8ea";
 export const COLORB7 = "#846545";
 export const COLORB8 = "#f5deb3";
-
-
 
 export const FILLETSIZE = 5;

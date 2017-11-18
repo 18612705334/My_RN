@@ -52,6 +52,7 @@ export default class SendMsgCountDown extends Component{
                         countDown:false,
                         value:'获取验证码'
                     })
+                    this.countTime=TIME;
                 }else {
 
                     this.setState({
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     buttonStyle:{
-        borderColor:FontAndColor.COLORB0,
+        borderColor:FontAndColor.NAVI_BAR_COLOR,
         borderWidth:1,
         width:Pixel.getPixel(100),
         height:Pixel.getPixel(32),
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
 
     },
     textStyle:{
-        color:FontAndColor.COLORB0,
+        color:FontAndColor.NAVI_BAR_COLOR,
         fontSize:Pixel.getPixel(FontAndColor.LITTLEFONT)
 
     },

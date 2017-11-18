@@ -57,7 +57,7 @@ export default class LoginFailSmsYes extends BaseComponent {
                         })
                     }}
                 >
-                    <View style={{flex: 1, backgroundColor: FontAndColor.COLORA3}}>
+                    <View style={{flex: 1, backgroundColor: FontAndColor.THEME_BACKGROUND_COLOR}}>
                         <NavigationBar
                             leftImageShow={false}
                             leftTextShow={true}
@@ -71,7 +71,7 @@ export default class LoginFailSmsYes extends BaseComponent {
         }
 
         return(
-            <View style={{flex: 1, backgroundColor: FontAndColor.COLORA3, alignItems:'center'}}>
+            <View style={{flex: 1, backgroundColor: FontAndColor.THEME_BACKGROUND_COLOR, alignItems:'center'}}>
                 <NavigationBar
                     leftImageShow={true}
                     leftTextShow={false}
@@ -108,14 +108,14 @@ const styles = StyleSheet.create({
       fontSize:  FontAndColor.NAVIGATORFONT34
     },
     coloredText:{
-        color:FontAndColor.COLORB0,
+        color:FontAndColor.NAVI_BAR_COLOR,
     },
 
 
     buttonStyle:{
         width:width - 30,
         height:44,
-        backgroundColor:FontAndColor.COLORB0,
+        backgroundColor:FontAndColor.NAVI_BAR_COLOR,
         marginBottom:30,
         borderRadius:4,
         justifyContent:'center',
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     },
 
     buttonTextStyle:{
-        color:FontAndColor.COLORA3,
+        color:FontAndColor.THEME_BACKGROUND_COLOR,
         fontSize:FontAndColor.BUTTONFONT
     }
 })

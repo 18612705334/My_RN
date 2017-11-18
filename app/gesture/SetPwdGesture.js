@@ -64,8 +64,8 @@ export  default class SetPwdGesture extends Component{
 
     static defaultProps = {
         message: '',
-        normalColor: FontAndColor.COLORB0,
-        rightColor: FontAndColor.COLORB0,
+        normalColor: FontAndColor.NAVI_BAR_COLOR,
+        rightColor: FontAndColor.NAVI_BAR_COLOR,
         wrongColor: FontAndColor.COLORB2,
         status: 'normal',
         interval: 0,
@@ -329,7 +329,7 @@ export  default class SetPwdGesture extends Component{
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:FontAndColor.COLORA3,
+        backgroundColor:FontAndColor.THEME_BACKGROUND_COLOR,
 
     },
 

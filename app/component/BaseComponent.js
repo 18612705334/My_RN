@@ -31,6 +31,7 @@ export default class BaseComponent extends Component {
     }
 
     componentDidMount() {
+
         // InteractionManager.setDeadline(500);
         try {
             BackAndroid.addEventListener('hardwareBackPress', this.handleBack);
@@ -43,10 +44,6 @@ export default class BaseComponent extends Component {
             // });
         }
 
-
-    }
-
-    initFinish() {
 
     }
 
@@ -99,7 +96,7 @@ export default class BaseComponent extends Component {
             width: Pixel.getPixel(140),
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: fontAndColor.COLORB0,
+            backgroundColor: fontAndColor.NAVI_BAR_COLOR,
             marginTop: Pixel.getPixel(66)
         },
         childStyle: {
@@ -122,9 +119,9 @@ export default class BaseComponent extends Component {
         if (this.state.loadingMarginTop) {
             margintop = this.state.loadingMarginTop;
         }
-        if (this.state.renderPlaceholderOnly == 'blank') {
+        if (this.state.renderPlaceholderOnly === 'blank') {
             view = <View/>
-        } else if (this.state.renderPlaceholderOnly == 'loading') {
+        } else if (this.state.renderPlaceholderOnly === 'loading') {
             view = <View style={{flex: 1, alignItems: 'center'}}>
                 <Image
                     style={{
@@ -142,7 +139,7 @@ export default class BaseComponent extends Component {
                     加载中......
                 </Text>
             </View>
-        } else if (this.state.renderPlaceholderOnly == 'error') {
+        } else if (this.state.renderPlaceholderOnly === 'error') {
             view = <View style={{flex: 1, alignItems: 'center'}}>
                 <Image
                     style={{
@@ -195,9 +192,11 @@ export default class BaseComponent extends Component {
 
     }
 
+
+    //菊花
     loadingView = () => {
         let view;
-        if (this.state.loading == true) {
+        if (this.state.loading === true) {
             view = <TouchableWithoutFeedback onPress={() => {
             }}>
                 <View

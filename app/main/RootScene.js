@@ -21,6 +21,7 @@ import {request} from '../utils/RequestUtil';
 import * as Urls from '../constant/appUrls';
 import WelcomeScene from './WelcomeScene';
 import LoginAndRegister from '../login/LoginAndRegister';
+import LoginGesture from '../login/LoginGesture';
 
 let Platform = require('Platform');
 
@@ -29,10 +30,15 @@ let {height, width} = Dimensions.get('window');
 var Pixel = new PixelUtil;
 
 
+
+
 export default class RootScene extends BaseComponent{
 
     componentDidMount(){
-        StorageUtil.mGetItem(KeyNames.NEED_TOAST_ERROR, ()=>{});
+        StorageUtil.mGetItem(KeyNames.NEED_TOAST_ERROR, (data)=>{
+            console.log(data);
+        });
+
         ErrorUtils.setGlobalHandler((e)=>{
             this.props.showToast(''+JSON.stringify(e));
             StorageUtil.mGetItem(KeyNames.PHONE, (res)=>{
@@ -48,7 +54,21 @@ export default class RootScene extends BaseComponent{
                 })
             })
         })
+
+
+        this.timer = setTimeout(()=>{
+            this.toJump();
+        },1000)
+
+
+
     }
+
+
+
+
+
+
 
     toJump=()=>{
         this.onPress()
@@ -76,7 +96,7 @@ export default class RootScene extends BaseComponent{
                                 StorageUtil.mGetItem(KeyNames.USER_INFO, (data)=>{  //获取本地存储的用户信息
                                     let datas = JSON.parse(data.result);
                                     //if (datas.user_level == 2){ //？代码一样，这么判断有毛用
-                                        if (data.enterprise_list == null||data.enterprise_list.length <= 0){
+                                        if (datas.enterprise_list == null||datas.enterprise_list.length <= 0){
                                             that.navigatorParams.component = LoginAndRegister;
                                             that.toNextPage(that.navigatorParams);
                                         }else {

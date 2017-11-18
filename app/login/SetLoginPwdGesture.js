@@ -54,7 +54,7 @@ export default class SetLoginPwdGesture extends BaseComponent {
                     show: false,
                 });
             }}>
-                <View style={{flex: 1, backgroundColor: FontAndColor.COLORA3}}>
+                <View style={{flex: 1, backgroundColor: FontAndColor.THEME_BACKGROUND_COLOR}}>
                     <NavigationBar
                         leftImageShow={false}
                         leftTextShow={true}
@@ -256,12 +256,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: FontAndColor.COLORA3,
+        backgroundColor: FontAndColor.THEME_BACKGROUND_COLOR,
     },
     gestureStyle: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: FontAndColor.COLORA3,
+        backgroundColor: FontAndColor.THEME_BACKGROUND_COLOR,
     },
     topStyle: {
         alignItems: 'center',
@@ -283,8 +283,8 @@ const styles = StyleSheet.create({
         margin: Pixel.getPixel(5),
         borderWidth: Pixel.getPixel(1),
         borderRadius: Pixel.getPixel(15),
-        borderColor: FontAndColor.COLORB0,
-        backgroundColor: FontAndColor.COLORB0,
+        borderColor: FontAndColor.NAVI_BAR_COLOR,
+        backgroundColor: FontAndColor.NAVI_BAR_COLOR,
     },
     topMessageStyle: {
         fontSize: Pixel.getFontPixel(17),

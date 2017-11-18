@@ -36,6 +36,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* My_SaasTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* My_SaasTests.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		EA141AED1FB6F45F00899E20 /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA141AEC1FB6F44300899E20 /* libSQLite.a */; };
 		EA8A77521F949DCB00BB43F0 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8A77511F949DB600BB43F0 /* libRNImagePicker.a */; };
 		EAF1F6321F6E311600C4E2B4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF1F6311F6E311600C4E2B4 /* SystemConfiguration.framework */; };
 		EAF1F64D1F6E313A00C4E2B4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF1F64C1F6E313A00C4E2B4 /* CoreTelephony.framework */; };
@@ -235,6 +236,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		EA141AEB1FB6F44300899E20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA141ACB1FB6F44300899E20 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E23D7B471ACEFE2A00C59171;
+			remoteInfo = SQLite;
+		};
 		EA8A77501F949DB600BB43F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EA8A77311F949DB500BB43F0 /* RNImagePicker.xcodeproj */;
@@ -283,6 +291,7 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		EA141ACB1FB6F44300899E20 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		EA8A77311F949DB500BB43F0 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		EAF1F6311F6E311600C4E2B4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EAF1F64C1F6E313A00C4E2B4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -305,6 +314,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA141AED1FB6F45F00899E20 /* libSQLite.a in Frameworks */,
 				EA8A77521F949DCB00BB43F0 /* libRNImagePicker.a in Frameworks */,
 				EAF1F6AA1F6E592400C4E2B4 /* libRCTWeChat.a in Frameworks */,
 				EAF1F6531F6E319000C4E2B4 /* libz.tbd in Frameworks */,
@@ -478,6 +488,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				EA141ACB1FB6F44300899E20 /* SQLite.xcodeproj */,
 				EA8A77311F949DB500BB43F0 /* RNImagePicker.xcodeproj */,
 				EAF1F69F1F6E3BBE00C4E2B4 /* RCTWeChat.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -524,6 +535,14 @@
 				00E356EE1AD99517003FC87E /* My_SaasTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* My_Saas-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* My_Saas-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA141ACC1FB6F44300899E20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA141AEC1FB6F44300899E20 /* libSQLite.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -724,6 +743,10 @@
 					ProductGroup = EA8A77321F949DB500BB43F0 /* Products */;
 					ProjectRef = EA8A77311F949DB500BB43F0 /* RNImagePicker.xcodeproj */;
 				},
+				{
+					ProductGroup = EA141ACC1FB6F44300899E20 /* Products */;
+					ProjectRef = EA141ACB1FB6F44300899E20 /* SQLite.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -909,6 +932,13 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EA141AEC1FB6F44300899E20 /* libSQLite.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSQLite.a;
+			remoteRef = EA141AEB1FB6F44300899E20 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		EA8A77511F949DB600BB43F0 /* libRNImagePicker.a */ = {

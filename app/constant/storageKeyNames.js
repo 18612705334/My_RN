@@ -23,6 +23,7 @@ export const USER_LEVEL = "user_level"; //	0：初级注册用户，1:正式用�
 export const NEED_GESTURE = "need_gesture"; //	是否需要手势解锁
 /* userinfo end */
 export const NEED_OPENBRAND = "need_openbrand"; //	需要打开车型列表
+export const NEED_CHECK_NEW_CAR = "checkNewCar";        // 选择新车列表
 export const NEED_CHECK_RECOMMEND = "checkRecommend";   // 取消推荐车源
 export const NEED_TOAST_ERROR = "need_toast_error";   // 登录界面是否需要弹出异常提示
 /* message start*/

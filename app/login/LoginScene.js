@@ -31,13 +31,13 @@ import LoginGesture from "./LoginGesture";
 import SetLoginPwdGesture from "./SetLoginPwdGesture";
 import Register from './Register';
 
-var Pixel = new PixelUtil();
-var Dimensions = require('Dimensions');
-var {width, height} = Dimensions.get('window');
-var Platform = require('Platform')
-var imgSrc: '';
-var imgSid: '';
-var userNames=[];
+let Pixel = new PixelUtil();
+let Dimensions = require('Dimensions');
+let {width, height} = Dimensions.get('window');
+let Platform = require('Platform')
+let imgSrc: '';
+let imgSid: '';
+let userNames=[];
 let andriodPhoneVersion = '';
 
 
@@ -69,7 +69,7 @@ export default class LoginScene extends BaseComponent {
 
     initFinish = ()=>{
         StorageUtil.mGetItem(StorageKeyNames.USERNAME, (data)=>{
-            if(data.code == 1 && data.result != null){
+            if(data.code === 1 && data.result !== null){
                 userNames = data.result.split(',')
             }
         })
@@ -102,7 +102,7 @@ export default class LoginScene extends BaseComponent {
                 verifyCode: null
             })
 
-            if (error.mycode == -300 || error.mycode == -500) {
+            if (error.mycode === -300 || error.mycode === -500) {
                 this.props.showToast("获取失败");
             } else {
                 this.props.showToast(error.mjson.msg + "");
@@ -119,9 +119,9 @@ export default class LoginScene extends BaseComponent {
         let userName = this.refs.loginUsername.getInputTextValue();
         let verifyCode = this.refs.loginVerifyCode.getInputTextValue();
 
-        if (userName == '') {
+        if (userName === '') {
             this.props.showToast("请输入正确的用户名");
-        } else if (typeof(verifyCode) == 'undefined' || verifyCode == '') {
+        } else if (typeof(verifyCode) === 'undefined' || verifyCode === '') {
             this.props.showToast('验证码不能为空');
         } else {   //发起请求
 
@@ -150,7 +150,7 @@ export default class LoginScene extends BaseComponent {
                     loading: false,
                 })
 
-                if (response.mycode == '1') {
+                if (response.mycode === 1) {
                     this.refs.loginSmsCode._startCountDown()
                 } else {
                     this.props.showToast(response.mjson.msg + '');
@@ -162,9 +162,9 @@ export default class LoginScene extends BaseComponent {
                     loading: false
                 });
 
-                if (error.mycode == -300 || error.mycode == -500) {
+                if (error.mycode === -300 || error.mycode === -500) {
                     this.props.showToast('获取验证码失败')
-                } else if (error.mycode == 7040012) {
+                } else if (error.mycode === 7040012) {
                     this.getVerifyCode();
                     this.props.showToast(error.mjson.msg + '')
                 } else {
@@ -181,19 +181,19 @@ export default class LoginScene extends BaseComponent {
         let verifyCode = this.refs.loginVerifyCode.getInputTextValue();
         let smsCode = this.refs.loginSmsCode.getInputTextValue();
 
-        if (userName == '' || userName.length != 11){
+        if (userName === '' || userName.length !== 11){
             this.props.showToast('请输入正确的用户名'); return;
         }
-        if (typeof (passWord) == 'undefined' || passWord == ''){
+        if (typeof (passWord) === 'undefined' || passWord === ''){
             this.props.showToast('密码不能为空'); return;
         }
         if (passWord.length<6){
             this.props.showToast('密码必须为6~16位'); return;
         }
-        if (typeof (verifyCode) == 'undefined' || verifyCode == ''){
+        if (typeof (verifyCode) === 'undefined' || verifyCode === ''){
             this.props.showToast('验证码不能为空'); return;
         }
-        if (typeof (smsCode) == 'undefined'|| smsCode == ''){
+        if (typeof (smsCode) === 'undefined'|| smsCode === ''){
             this.props.showToast('短信验证码不能为空'); return;
         }
 
@@ -232,22 +232,22 @@ export default class LoginScene extends BaseComponent {
                 this.setState({loading:false})
 
                 this.props.showToast('登录成功 哈哈')
-                if(response.mjson.data.user_level == 2 || response.mjson.data.user_level == 1){   //1和2表示什么
-                    if(response.mjson.data.enterprise_list == []|| response.mjson.data.enterprise_list == ''){
+                if(response.mjson.data.user_level === 2 || response.mjson.data.user_level === 1){   //1和2表示什么
+                    if(response.mjson.data.enterprise_list === []|| response.mjson.data.enterprise_list === ''){
                         this.props.showToast("您的账号未绑定企业");
                     }else{
                         StorageUtil.mSetItem(StorageKeyNames.LOGIN_TYPE, '2');
                         StorageUtil.mGetItem(StorageKeyNames.USERNAME, (data)=>{
-                            if(data.code==1){
-                                if (data.result == null|| data.result == ''){
+                            if(data.code===1){
+                                if (data.result === null|| data.result === ''){
                                     StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName);
-                                }else if (data.result.indexOf(userName) == -1){
+                                }else if (data.result.indexOf(userName) === -1){
                                     StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName+','+data.result)
-                                }else if(data.result == userName){
+                                }else if(data.result === userName){
                                 }else {
                                     let names;
-                                    if (data.result.indexOf(userName+',') == -1){
-                                        if(data.result.indexOf(','+ userName) == -1){
+                                    if (data.result.indexOf(userName+',') === -1){
+                                        if(data.result.indexOf(','+ userName) === -1){
                                             name = data.result.replace(userName, '')
                                         }else {
                                             names = data.result.replace(','+ userName, '')
@@ -273,8 +273,8 @@ export default class LoginScene extends BaseComponent {
                         StorageUtil.mSetItem(StorageKeyNames.USER_LEVEL, response.mjson.data.user_level + "");
 
                         StorageUtil.mGetItem(response.mjson.data.phone +'', (data)=>{
-                            if (data.code == 1){
-                                if(data.result != null){
+                            if (data.code === 1){
+                                if(data.result !== null){
                                     this.loginPage({
                                         name:'LoginGesture',
                                         component:LoginGesture,
@@ -301,16 +301,16 @@ export default class LoginScene extends BaseComponent {
                     StorageUtil.mSetItem(StorageKeyNames.LOGIN_TYPE, '2');
                     // 保存登录成功后的用户信息
                     StorageUtil.mGetItem(StorageKeyNames.USERNAME, (data) => {
-                        if (data.code == 1) {
-                            if (data.result == null || data.result == "") {
+                        if (data.code === 1) {
+                            if (data.result === null || data.result === "") {
                                 StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName);
-                            } else if (data.result.indexOf(userName) == -1) {
+                            } else if (data.result.indexOf(userName) === -1) {
                                 StorageUtil.mSetItem(StorageKeyNames.USERNAME, userName + "," + data.result);
-                            } else if (data.result == userName) {
+                            } else if (data.result === userName) {
                             } else {
                                 let names;
-                                if (data.result.indexOf(userName + ",") == -1) {
-                                    if (data.result.indexOf("," + userName) == -1) {
+                                if (data.result.indexOf(userName + ",") === -1) {
+                                    if (data.result.indexOf("," + userName) === -1) {
                                         names = data.result.replace(userName, "")
                                     } else {
                                         names = data.result.replace("," + userName, "")
@@ -334,8 +334,8 @@ export default class LoginScene extends BaseComponent {
                     StorageUtil.mSetItem(StorageKeyNames.TOKEN, response.mjson.data.token + "");
                     StorageUtil.mSetItem(StorageKeyNames.USER_LEVEL, response.mjson.data.user_level + "");
                     StorageUtil.mGetItem(response.mjson.data.phone + "", (data) => {
-                        if (data.code == 1) {
-                            if (data.result != null) {
+                        if (data.code === 1) {
+                            if (data.result !== null) {
                                 // if (response.mjson.data.user_level == 2) {
                                 //     if (response.mjson.data.enterprise_list[0].role_type == '2') {
                                 this.loginPage({
@@ -381,9 +381,9 @@ export default class LoginScene extends BaseComponent {
             this.setState({
                 loading: false,
             });
-            if (error.mycode == -300 || error.mycode == -500) {
+            if (error.mycode === -300 || error.mycode === -500) {
                 this.props.showToast("登录失败");
-            } else if (error.mycode == 7040004) {
+            } else if (error.mycode === 7040004) {
                 this.getVerifyCode();
                 this.props.showToast(error.mjson.msg + "");
             } else {
@@ -414,7 +414,7 @@ export default class LoginScene extends BaseComponent {
                 }}
             >
 
-                <View style={{backgroundColor: FontAndColor.COLORA3, flex: 1}}>
+                <View style={{backgroundColor: FontAndColor.THEME_BACKGROUND_COLOR, flex: 1}}>
 
                     <NavigationBar
                         leftImageShow={true}
@@ -509,7 +509,7 @@ export default class LoginScene extends BaseComponent {
                     </TouchableOpacity>
 
 
-                    <View style={{flex: 1}}></View>
+                    <View style={{flex: 1}}/>
                     <Image styel={styles.backgroundImage} source={require('./../../image/login/login_bg.png')}/>
 
                 </View>
@@ -546,7 +546,7 @@ const styles = StyleSheet.create({
     loginButtonStyle: {
         height: 44,
         width: width - 30,
-        backgroundColor: FontAndColor.COLORB0,
+        backgroundColor: FontAndColor.NAVI_BAR_COLOR,
         margin: 15,
         marginTop: 25,
         borderRadius: 5,
