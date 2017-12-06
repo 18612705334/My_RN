@@ -22,7 +22,8 @@ import * as Urls from '../constant/appUrls';
 import WelcomeScene from './WelcomeScene';
 import LoginAndRegister from '../login/LoginAndRegister';
 import LoginGesture from '../login/LoginGesture';
-
+import SQLiteUtil from "../utils/SQLiteUtil";
+const SQLite = new SQLiteUtil();
 let Platform = require('Platform');
 
 
@@ -35,25 +36,26 @@ var Pixel = new PixelUtil;
 export default class RootScene extends BaseComponent{
 
     componentDidMount(){
-        StorageUtil.mGetItem(KeyNames.NEED_TOAST_ERROR, (data)=>{
-            console.log(data);
-        });
-
-        ErrorUtils.setGlobalHandler((e)=>{
-            this.props.showToast(''+JSON.stringify(e));
-            StorageUtil.mGetItem(KeyNames.PHONE, (res)=>{
-                let maps = {
-                    phone:res.result,
-                    message:''+JSON.stringify(e)
-                }
-
-                requset(Urls.ADDACCOUNTMESSAGEINFO, 'Post', maps).then(()=>{
-
-                }, (error)=>{
-
-                })
-            })
-        })
+        super.componentDidMount()
+        // StorageUtil.mGetItem(KeyNames.NEED_TOAST_ERROR, (data)=>{
+        //     console.log(data);
+        // });
+        //
+        // ErrorUtils.setGlobalHandler((e)=>{
+        //     this.props.showToast(''+JSON.stringify(e));
+        //     StorageUtil.mGetItem(KeyNames.PHONE, (res)=>{
+        //         let maps = {
+        //             phone:res.result,
+        //             message:''+JSON.stringify(e)
+        //         }
+        //
+        //         requset(Urls.ADDACCOUNTMESSAGEINFO, 'Post', maps).then(()=>{
+        //
+        //         }, (error)=>{
+        //
+        //         })
+        //     })
+        // })
 
 
         this.timer = setTimeout(()=>{
@@ -62,10 +64,36 @@ export default class RootScene extends BaseComponent{
 
 
 
+
+
     }
 
 
+    initFinish = ()=>{
 
+        SQLite.createTable()
+        let d = this.dateFormat(new Date, 'yyyy-MM-dd hh:mm:ss')
+        StorageUtil.mSetItem(KeyNames.INTO_TIME, d);
+        let map = {
+            type:'6',
+            api:'api/v1/App/Update'
+        };
+
+        request(Urls.APP_UPDATE, 'POST', map).then((response)=>{
+            if (response.mjson.data.versioncode > versionCode) {
+                this.navigatorParams.component = UpLoadScene;
+                this.navigatorParams.params = {url: response.mjson.data.downloadurl}
+                this.toNextPage(this.navigatorParams);
+            } else {
+                this.toJump();
+            }
+        }, (error)=>{
+            this.toJump();
+        })
+
+
+
+    }
 
 
 
@@ -156,6 +184,25 @@ export default class RootScene extends BaseComponent{
             </Image>
 
         )
+    }
+
+    /**
+     *   日期格式化
+     **/
+    dateFormat = (date, fmt) => {
+        let o = {
+            "M+": date.getMonth() + 1, //月份
+            "d+": date.getDate(), //日
+            "h+": date.getHours(), //小时
+            "m+": date.getMinutes(), //分
+            "s+": date.getSeconds(), //秒
+            "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+            "S": date.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (let k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
     }
 }
 

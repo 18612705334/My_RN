@@ -267,11 +267,10 @@ export default class HomeScene extends BaseComponent {
 
                 <View style={{flexDirection: 'row'}}>
                     <ViewPagers
-                        onChangePage={() => {
-                        }}
+                        onChangePage={() => {}}
                         items={this.state.headSource}
                         callBack={(url) => {
-                            this.props.callback({name: 'WebScene', component: WebScene, params: {webUrl: urls}})
+                            this.props.callBack({name: 'WebScene', component: WebScene, params: {webUrl: url}})
                         }}
                         toNext={() => {
                             this.props.jumpScene('financePage', '');
@@ -324,7 +323,7 @@ export default class HomeScene extends BaseComponent {
                 />
                 <HomeRowButton
                     onPress = {(id)=>{
-                        this.props.jumpScene('carpage', storageKeyNames.NEED_CHECK_NEW_CAR)
+                        this.props.callBack({component:CarInfoScene, name:'CarInfoScene', params:{carID:id}})
 
                     }}
                     list = {this.carData}

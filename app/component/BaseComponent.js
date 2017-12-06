@@ -47,6 +47,8 @@ export default class BaseComponent extends Component {
 
     }
 
+
+
     toNextPage = (mProps) => {
         const navigator = this.props.navigator;
         if (navigator) {

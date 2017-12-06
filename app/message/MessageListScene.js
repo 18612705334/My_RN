@@ -35,7 +35,7 @@ let Pixel = new PixelUtil();
 let data = [
     {
         img: require('../../image/message/backlog.png'),
-        title: '代办事件',
+        title: '待办事件',
         subtitle: '快速处理代办事件'
     },
     {
@@ -68,7 +68,7 @@ export default class MessageListScene extends MyBaseComponent {
         this.headLineNum = 0;
         this.companyId = '';
         this.contentTypes = [];
-        let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== ri2});
+        let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             dataSource: ds.cloneWithRows([]),
             refreshing:false
@@ -129,9 +129,7 @@ export default class MessageListScene extends MyBaseComponent {
         });
 
         this.setState({
-            renderPlaceholderOnly: 'success',
             title: '消息通知',
-            dataSource: this.state.dataSource.cloneWithRows(data)
         })
 
     };
@@ -139,16 +137,195 @@ export default class MessageListScene extends MyBaseComponent {
     getSysMessageNum = ()=>{
         SQLite.selectData('SELECT * FROM messageSystemModel WHERE tel = ? order by createTime desc', [this.custPhone], (data)=>{
 
+            if(data.result.rows.length>0) {
 
 
+                let dbLastTime = data.result.rows.item(0).createTime;
+                let dbCount = 0;
+                for (let i = 0; i < data.result.rows.length; i++) {
+                    if (!data.result.rows.item(i).isRead) {
+                        dbCount++;
+                    }
+                }
+                StorageUtil.mGetItem(StorageKeyNames.SYSTEMS_LAST_MESSAGE_TIME, (timeData) => {
+                    if (timeData.code === 1 && timeData.result !== null) {
+                        if (timeData.result > data.result.rows.item(0).createTime) {
+                            dbLastTime = timeData.result;
+                        }
+                    }
+
+                    let maps = {
+                        type: 'systems',
+                        timestamp: new Date(dbLastTime.replace(/-/g, '/')).valueOf(),
+
+                    };
+                    request(AppUrls.SELECT_UNREAD_MESSAGE_COUNT, 'post', maps).then((response) => {
+                        this.sysMessageNum = response.mjson.data + dbCount;
+                        //console.log('this.sysMessageNum======', this.sysMessageNum);
+                        this.getHeadLineNum();
+                    }, (error) => {
+                        this.getHeadLineNum();
+                    });
+                });
+
+            }else {
+                StorageUtil.mGetItem(StorageKeyNames.SYSTEMS_LAST_MESSAGE_TIME, (timeData) => {
+                    if (timeData.code === 1 && timeData.result !== null) {
+                        StorageUtil.mGetItem(StorageKeyNames.INTO_TIME, (intoTimeData) => {
+                            if (intoTimeData.code === 1 && intoTimeData.result !== null) {
+                                let dbLastTime = intoTimeData.result;
+                                if (timeData.result > intoTimeData.result) {
+                                    dbLastTime = timeData.result;
+                                } else {
+                                    dbLastTime = intoTimeData.result;
+                                }
+                                let maps = {
+                                    type: 'systems',
+                                    timestamp: new Date(dbLastTime.replace(/-/g, '/')).valueOf(),
+                                    //token: '5afa531b-4295-4c64-8d6c-ac436c619078'
+                                };
+
+                                request(AppUrls.SELECT_UNREAD_MESSAGE_COUNT, 'post', maps).then((response) => {
+                                    this.sysMessageNum = response.mjson.data;
+                                    //console.log('this.sysMessageNum======', this.sysMessageNum);
+                                    this.getHeadLineNum();
+                                }, (error) => {
+                                    this.getHeadLineNum();
+                                });
+                            } else {
+                                this.props.showToast('确认验收失败');
+                            }
+                        });
+                    } else {
+                        StorageUtil.mGetItem(StorageKeyNames.INTO_TIME, (data) => {
+                            if (data.code === 1 && data.result !== null) {
+                                let dbLastTime = data.result;
+                                let maps = {
+                                    type: 'systems',
+                                    timestamp: new Date(dbLastTime.replace(/-/g, '/')).valueOf(),
+
+                                };
+
+                                request(AppUrls.SELECT_UNREAD_MESSAGE_COUNT, 'post', maps).then((response) => {
+                                    this.sysMessageNum = response.mjson.data;
+                                    //console.log('this.sysMessageNum======', this.sysMessageNum);
+                                    this.getHeadLineNum();
+                                }, (error) => {
+                                    this.getHeadLineNum();
+                                });
+                            } else {
+                                this.props.showToast('确认验收失败');
+                            }
+                        });
+                    }
+                });
+            }
         })
-
     };
 
+    getHeadLineNum = () => {
+        SQLite.selectData('SELECT * FROM messageHeadLineModel WHERE tel = ? order by createTime desc', [this.custPhone],
+            (data) => {
+                if (data.result.rows.length > 0) {
+                    let dbLastTime = data.result.rows.item(0).createTime;
+                    let dbCount = 0;
+                    for (let i = 0; i < data.result.rows.length; i++) {
+                        //console.log('data.result.rows.item(i).isRead-=-=-=-', data.result.rows.item(i).isRead);
+                        if (!data.result.rows.item(i).isRead) {
+                            dbCount++;
+                        }
+                    }
+                    StorageUtil.mGetItem(StorageKeyNames.ADVERTISEMENT_LAST_MESSAGE_TIME, (timeData) => {
+                        if (timeData.code == 1 && timeData.result != null) {
+                            if (timeData.result > data.result.rows.item(0).createTime) {
+                                dbLastTime = timeData.result;
+                            }
+                        }
+                        // http
+                        let maps = {
+                            type: 'advertisement',
+                            timestamp: new Date(dbLastTime.replace(/-/g, '/')).valueOf(),
+                            //token: '5afa531b-4295-4c64-8d6c-ac436c619078'
+                        };
+                        let url = AppUrls.SELECT_UNREAD_MESSAGE_COUNT;
+                        request(url, 'post', maps).then((response) => {
+                            this.headLineNum = response.mjson.data + dbCount;
+                            //console.log('this.sysMessageNum======', this.sysMessageNum);
+                            this.loadListData();
+                        }, (error) => {
+                            this.loadListData();
+                        });
+                    });
+                } else {
+                    StorageUtil.mGetItem(StorageKeyNames.ADVERTISEMENT_LAST_MESSAGE_TIME, (timeData) => {
+                        if (timeData.code == 1 && timeData.result != null) {
+                            StorageUtil.mGetItem(StorageKeyNames.INTO_TIME, (intoTimeData) => {
+                                if (intoTimeData.code == 1 && intoTimeData.result != null) {
+                                    let dbLastTime = intoTimeData.result;
+                                    if (timeData.result > intoTimeData.result) {
+                                        dbLastTime = timeData.result;
+                                    } else {
+                                        dbLastTime = intoTimeData.result;
+                                    }
+                                    let maps = {
+                                        type: 'advertisement',
+                                        timestamp: new Date(dbLastTime.replace(/-/g, '/')).valueOf(),
+                                        //token: '5afa531b-4295-4c64-8d6c-ac436c619078'
+                                    };
+                                    let url = AppUrls.SELECT_UNREAD_MESSAGE_COUNT;
+                                    request(url, 'post', maps).then((response) => {
+                                        this.headLineNum = response.mjson.data;
+                                        //console.log('this.sysMessageNum======', this.sysMessageNum);
+                                        this.loadListData();
+                                    }, (error) => {
+                                        this.loadListData();
+                                    });
+                                } else {
+                                    //this.props.showToast('确认验收失败');
+                                }
+                            });
+                        } else {
+                            StorageUtil.mGetItem(StorageKeyNames.INTO_TIME, (data) => {
+                                if (data.code == 1 && data.result != null) {
+                                    let dbLastTime = data.result;
+                                    let maps = {
+                                        type: 'advertisement',
+                                        timestamp: new Date(dbLastTime.replace(/-/g, '/')).valueOf(),
+                                        //token: '5afa531b-4295-4c64-8d6c-ac436c619078'
+                                    };
+                                    let url = AppUrls.SELECT_UNREAD_MESSAGE_COUNT;
+                                    request(url, 'post', maps).then((response) => {
+                                        this.headLineNum = response.mjson.data;
+                                        //console.log('this.sysMessageNum======', this.sysMessageNum);
+                                        this.loadListData();
+                                    }, (error) => {
+                                        this.loadListData();
+                                    });
+                                } else {
+                                    //this.props.showToast('确认验收失败');
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+    };
+
+    loadListData = () => {
+
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(data),
+            refreshing: false,
+            renderPlaceholderOnly: 'success'
+        });
+    };
 
     onRefresh = () => {
 
-
+            this.setState({
+                refreshing:true
+            })
+            this.loadData()
     };
 
     renderView() {
@@ -178,8 +355,6 @@ export default class MessageListScene extends MyBaseComponent {
                         />
                     }
                 />
-
-
             </View>
 
         )
@@ -250,5 +425,4 @@ export default class MessageListScene extends MyBaseComponent {
                 break
         }
     }
-
 }

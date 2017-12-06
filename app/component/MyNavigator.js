@@ -7,7 +7,7 @@ import {
 
 } from 'react-native';
 
-var Platform = require('Platform');
+let Platform = require('Platform');
 import RootScene from '../main/RootScene'
 import {setAll} from '../constant/AllBackLogin'
 import Login from '../../app/login/LoginScene'
@@ -19,6 +19,7 @@ import finance from '../main/FinanceScene'
 import mine from '../main/MineScene'
 import search from '../carSource/CarSeekScene'
 import message from '../message/MessageListScene'
+import daily from '../message/dailyReminder/DailyReminderScene'
 
 export default class MyNavigator extends Component {
 
@@ -26,10 +27,10 @@ export default class MyNavigator extends Component {
         return (
             <Navigator
                 initialRoute={{
-                     // component: RootScene,
-                     // name: 'RootScene',
-                    component: message,
-                    name: 'message'
+                     component: RootScene,
+                     name: 'RootScene',
+                    // component: daily,
+                    // name: 'daily'
 
                 }}
 
