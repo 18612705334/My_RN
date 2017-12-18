@@ -5,7 +5,7 @@ import {
     TouchableOpacity,
     Navigator,
     TouchableHighlight,
-    BackAndroid,
+    BackHandler,
     InteractionManager,
     TouchableWithoutFeedback,
     Dimensions,
@@ -34,7 +34,7 @@ export default class BaseComponent extends Component {
 
         // InteractionManager.setDeadline(500);
         try {
-            BackAndroid.addEventListener('hardwareBackPress', this.handleBack);
+            BackHandler.addEventListener('hardwareBackPress', this.handleBack);
         } catch (e) {
 
         } finally {
@@ -46,8 +46,6 @@ export default class BaseComponent extends Component {
 
 
     }
-
-
 
     toNextPage = (mProps) => {
         const navigator = this.props.navigator;
@@ -66,7 +64,6 @@ export default class BaseComponent extends Component {
             }])
         }
     }
-
 
 
     backPage = () => {

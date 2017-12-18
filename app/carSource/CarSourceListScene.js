@@ -143,8 +143,6 @@ export default  class CarSourceScene extends BaseComponent{
     }
 
 
-
-
     componentWillReceiveProps(){
 
         StorageUtil.mGetItem(storageKeyNames.NEED_OPENBRAND, (data)=>{
@@ -154,8 +152,6 @@ export default  class CarSourceScene extends BaseComponent{
                 }
             }
         })
-
-
 
         StorageUtil.mSetItem(storageKeyNames.NEED_OPENBRAND, 'false');
 
@@ -171,8 +167,6 @@ export default  class CarSourceScene extends BaseComponent{
             }
         });
         StorageUtil.mSetItem(storageKeyNames.NEED_OPENBRAND, 'false')
-
-
 
         StorageUtil.mGetItem(storageKeyNames.LOAN_SUBJECT, (data)=>{
             if(data.code === 1&& data.result !== null){
@@ -259,7 +253,9 @@ export default  class CarSourceScene extends BaseComponent{
                         return(
                             <CarCell
                                 carCellData = {item}
-                                onPress = {this.carCellOnPres.bind([item, sectionID, rowID])} />
+                                onPress = {()=>{
+                                        this.carCellOnPres(item, sectionID, rowID)
+                                    }} />
                             )
                     }}
                     renderFooter={this.renderListFooter}
@@ -284,17 +280,21 @@ export default  class CarSourceScene extends BaseComponent{
         )
     }
 
-    carCellOnPres(item, sectionID, rowID){
+    carCellOnPres = (item, sectionID, rowID) => {
 
-
-
+        this.props.callBack({
+            component:CarInfoScene,
+            name:'CarInfoScene',
+            params:{
+                carID:item.id
+            }
+        })
     }
 
     refreshingData = ()=>{
         carData = []
         this.setState({isRefreshing: true});
         this.loadData(1)
-
     }
 
 
@@ -325,7 +325,6 @@ export default  class CarSourceScene extends BaseComponent{
             params:{
                 checkedCarClick:this.checkedCarClick
             }
-
         })
     }
 
@@ -426,6 +425,4 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center'
     }
-
-
 })

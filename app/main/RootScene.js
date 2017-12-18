@@ -26,11 +26,9 @@ import SQLiteUtil from "../utils/SQLiteUtil";
 const SQLite = new SQLiteUtil();
 let Platform = require('Platform');
 
-
+const versionCode = 27.0;
 let {height, width} = Dimensions.get('window');
-var Pixel = new PixelUtil;
-
-
+let Pixel = new PixelUtil;
 
 
 export default class RootScene extends BaseComponent{
@@ -63,9 +61,6 @@ export default class RootScene extends BaseComponent{
         },1000)
 
 
-
-
-
     }
 
 
@@ -80,6 +75,7 @@ export default class RootScene extends BaseComponent{
         };
 
         request(Urls.APP_UPDATE, 'POST', map).then((response)=>{
+
             if (response.mjson.data.versioncode > versionCode) {
                 this.navigatorParams.component = UpLoadScene;
                 this.navigatorParams.params = {url: response.mjson.data.downloadurl}
@@ -144,7 +140,6 @@ export default class RootScene extends BaseComponent{
                             }
 
                         }
-
 
                     }
                 })

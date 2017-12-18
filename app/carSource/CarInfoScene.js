@@ -46,6 +46,7 @@ const Pixel = new PixelUtil();
 import {request} from "../utils/RequestUtil";
 import * as AppUrls from "../constant/appUrls";
 import MyBaseComponent from "../component/MyBaseComponent";
+import SaasText from "../component/SaasText";
 
 let ScreenWidth = Dimensions.get('window').width;
 let resolveAssetSource = require('resolveAssetSource');
@@ -53,11 +54,9 @@ const IS_ANDROID = Platform.OS === 'android';
 let shareClass = NativeModules.ZNShareClass;
 
 const carParameterViewColor = [
-
     'rgba(5, 197, 194,0.15)',
     'rgba(58, 200, 126,0.15)',
     'rgba(47, 155, 250,0.15)',
-
 ];
 
 const carParameterTextColor = [
@@ -106,9 +105,10 @@ let carImageArray = [];
 
 
 export default class CarInfoScene extends MyBaseComponent {
+
     constructor(props){
         super(props)
-        this.state ={
+        this.state = {
             imageArray: new ImagePageView.DataSource({pageHasChanged:(r1,r2)=>r1!==r2}),
             renderPlaceholderOnly: 'blank',
             residualsData: [],
@@ -132,12 +132,9 @@ export default class CarInfoScene extends MyBaseComponent {
                     }
                 }
                 getRole.getRoleList((data)=>{
-
                     this.roleList = data;
                     this.loadData()
                 })
-
-
             }
         })
     }
@@ -193,12 +190,12 @@ export default class CarInfoScene extends MyBaseComponent {
                 }
             }
 
-
             this.setState({
                 carData:carData,
-                imageArray:this.state.imageArray.cloneWithRows(carData.imgs),
+                imageArray:this.state.imageArray.cloneWithPages(carData.imgs),
                 renderPlaceholderOnly: 'success',
             })
+
         }, (error)=>{
 
             this.setState({
@@ -230,18 +227,48 @@ export default class CarInfoScene extends MyBaseComponent {
     }
 
 
+    dateReversal = (time) => {
+
+        const date = new Date();
+        date.setTime(time);
+        return (date.getFullYear() + "-" + (this.PrefixInteger(date.getMonth() + 1, 2)));
+
+    };
+
+    PrefixInteger = (num, length) => {
+        return (Array(length).join('0') + num).slice(-length);
+    }
+
 
     allRefresh=()=>{
         this.loadData();
     }
 
+
+
+
     renderView(){
         return(
-            <View style = {{flex:1, backgroundColor:'red'}}>
+            <View style = {{flex:1, backgroundColor:'red', alignItems:'center', justifyContent:'center'}}>
+                <TouchableOpacity
+                    onPress={()=>{
+                        this.toNextPage({
+                            component:CarInfoScene,
+                            name:'CarInfoScene',
+                            params:{
+                                carID:this.props.carID
+                            }
 
 
+                        })
+                    }}
+                >
 
+                    <SaasText>
+                        跳转
+                    </SaasText>
 
+                </TouchableOpacity>
             </View>
         )
     }
