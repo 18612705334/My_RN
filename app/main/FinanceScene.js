@@ -250,8 +250,44 @@ export default  class FinanceScene extends BaseComponent{
            />
         )
     }
+    navigatorParams = {
+        name: 'LendMoneySence',
+        component: LendMoneySence,
+        params: {}
+    }
+
+    homeItemOnPress = (title) => {
+
+            if (title === '借款') {
+
+                    this.navigatorParams.name = 'LendMoneySence';
+                    this.navigatorParams.component = LendMoneySence;
+                    this.navigatorParams.params = {
+                        credit_status: mnyData.credit_status,
+                        inventory_financing_status: mnyData.inventory_financing_status,
+                        purchase_archives_after_status: mnyData.purchase_archives_after_status,
+                        purchase_archives_first_status: mnyData.purchase_archives_first_status,
+                        purchase_status: mnyData.purchase_status,
+                        customerName: this.state.customerName,
+                        backRefresh: () => {
+                            this.allRefresh()
+                        }
+                    }
+
+                    this.props.callBack(this.navigatorParams);
+
+            } else {
+                this.navigatorParams.name = "RepaymentScene";
+                this.navigatorParams.component = RepaymentScene;
+                this.navigatorParams.params = {
+                    customerName: this.state.customerName,
+
+                };
+                this.props.callBack(this.navigatorParams);
+            }
 
 
+    }
     refreshingData = ()=>{
 
         this.setState({
@@ -325,7 +361,7 @@ export default  class FinanceScene extends BaseComponent{
                         subtitle = {'一步快速搞定'}
                         style = {{borderRightWidth:1, borderRightColor:fontAndColor.COLORA4}}
                         onPress = {()=>{
-
+                            this.homeItemOnPress('借款')
                         }}
 
                     />
@@ -334,7 +370,7 @@ export default  class FinanceScene extends BaseComponent{
                         title = {'还款'}
                         subtitle = {'智能自动提醒'}
                         onPress = {()=>{
-
+                            this.homeItemOnPress('还款')
                         }}
                     />
 
@@ -368,7 +404,14 @@ export default  class FinanceScene extends BaseComponent{
         this.getApplyData();
     }
 
-
+    allRefresh = () => {
+        firstType = '-1';
+        lastType = '-1';
+        movies = [];
+        page = 1;
+        this.setState({renderPlaceholderOnly: 'loading'});
+        this.getMnyData();
+    }
 
 }
 

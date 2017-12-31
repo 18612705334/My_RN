@@ -3,12 +3,15 @@
  */
 //export const BASEURL = 'http://dev.api-gateway.dycd.com/';
 
-
 /**
  * 测试地址
  */
 export const BASEURL = 'http://api-gateway.test.dycd.com/';
 
+/**
+ * 测试地址2
+ */
+//export const BASEURL = 'http://10.3.11.99:80/';
 
 /**
  * 正式地址
@@ -66,6 +69,15 @@ export const CAR_HOME_BRAND = BASEURL + V + 'home/brand';
  */
 export const CAR_HOME_SERIES = BASEURL + V + 'home/series';
 
+/**
+ * 分享次数统计
+ */
+export const INVITE_SHARECOUNT = BASEURL + V + "invite/shareCount";// v1/index/captcha
+
+/**
+ * 注册邀请码分享接口
+ */
+export const INVITE_SHARE = BASEURL + V + "invite/share";// v1/index/captcha
 
 /**
  * 获取车型
@@ -134,10 +146,10 @@ export const CAR_GET_RESIDUALS = BASEURL + V + 'che/residuals';
  */
 export const CAR_ORDER_SAVE = BASEURL + V + 'order/save';
 
-// /**
-//  * 获取客服电话号码
-//  */
-// export const CAR_CUSTOMER_PHONE_NUMBER = BASEURL + V + '/index/getCustomService';
+/**
+ * 获取客服电话号码
+ */
+export const GET_CUSTOM_SERVICE = BASEURL + V + '/index/getCustomService';
 
 /**
  * 获取客服电话号码-商户号码
@@ -192,62 +204,62 @@ export const CAR_SASS_PUBLISH = BASEURL + 'cheshang/sass/publish';
 /**
  * 创建收车管理列表
  */
-export const CAR_SASS_SELECT_LIST= BASEURL + 'cheshang/sass/selectList';
+export const CAR_SASS_SELECT_LIST = BASEURL + 'cheshang/sass/selectList';
 
 /**
  * 收车任务详情
  */
-export const CAR_SASS_SELECT_MSG= BASEURL + 'cheshang/sass/selectMsg';
+export const CAR_SASS_SELECT_MSG = BASEURL + 'cheshang/sass/selectMsg';
 
 /**
  * 整备车辆任务列表
  */
-export const CAR_CHESHANG_TASKS= BASEURL + 'cheshang/sass/tasks';
+export const CAR_CHESHANG_TASKS = BASEURL + 'cheshang/sass/tasks';
 
 /**
  * 创建整备任务
  */
-export const CAR_CHESHANG_PUBLISHTASK= BASEURL + 'cheshang/sass/publishTask';
+export const CAR_CHESHANG_PUBLISHTASK = BASEURL + 'cheshang/sass/publishTask';
 
 /**
  * saas-发布车辆
  */
-export const CAR_CHESHANG_PUBLISHCAR= BASEURL + 'cheshang/sass/publishCar';
+export const CAR_CHESHANG_PUBLISHCAR = BASEURL + 'cheshang/sass/publishCar';
 
 /**
  * 查看整备任务
  */
-export const CAR_CHESHANG_TASKINFO= BASEURL + 'cheshang/sass/taskInfo';
+export const CAR_CHESHANG_TASKINFO = BASEURL + 'cheshang/sass/taskInfo';
 
 /**
  * 整备任务 - 评估师提交任务
  */
-export const CAR_CHESHANG_PGS_EDIT_TASK= BASEURL + 'cheshang/sass/pgsEditTask';
+export const CAR_CHESHANG_PGS_EDIT_TASK = BASEURL + 'cheshang/sass/pgsEditTask';
 
 /**
  * 整备任务 - 整备员提交任务
  */
-export const CAR_CHESHANG_ZBY_EDIT_TASK= BASEURL + 'cheshang/sass/zbyEditTask';
+export const CAR_CHESHANG_ZBY_EDIT_TASK = BASEURL + 'cheshang/sass/zbyEditTask';
 
 /**
  * 整备任务 - 经理提交任务
  */
-export const CAR_CHESHANG_MANAGER_EDIT_TASK= BASEURL + 'cheshang/sass/managerEditTask';
+export const CAR_CHESHANG_MANAGER_EDIT_TASK = BASEURL + 'cheshang/sass/managerEditTask';
 
 /**
  * 整备任务 - 运营专员交任务
  */
-export const CAR_CHESHANG_YYZY_EDIT_TASK= BASEURL + 'cheshang/sass/updateTaskByyyzy';
+export const CAR_CHESHANG_YYZY_EDIT_TASK = BASEURL + 'cheshang/sass/updateTaskByyyzy';
 
 /**
  * 获取销售员
  */
-export const CAR_CHESHANG_GET_ALLCHILD= BASEURL + 'cheshang/sass_php/subAccountGetAllChild';
+export const CAR_CHESHANG_GET_ALLCHILD = BASEURL + 'cheshang/sass_php/subAccountGetAllChild';
 
 /**
  * 分享成功回调
  */
-export const CAR_CHESHANG_SHARE_MOMENT_COUNT= BASEURL + 'cheshang/sass/shareMomentCount';
+export const CAR_CHESHANG_SHARE_MOMENT_COUNT = BASEURL + 'cheshang/sass/shareMomentCount';
 
 /**
  * 获取登记人信息
@@ -966,6 +978,7 @@ export const LOGIN = BASEURL + V + "auth/login";// auth/login
  */
 export const REGISTER = BASEURL + V + "auth/register";//  auth/register
 
+
 /**
  * 设置密码
  *
@@ -1131,14 +1144,6 @@ export const FIRST_REPAYMENT_CONTRACT = '/api/v1/Contract/see_electron_repayment
  *  签署-扣款协议合同
  */
 export const FIRST_REPAYMENT_CONTRACT_SIGN = '//api/v1/Contract/sign_electron_repayment_contract';
-
-
-/**
- *  form @dingyonggang
- *  签署订单合同
- */
-export const SIGN_ORDER_CONTRACT = BASEURL + V + 'order/signContractAll';
-
 //CRM TEST
 export const PRE = "http://10.3.10.35:8080/";
 /**
@@ -1219,5 +1224,152 @@ export const UPDATE_CAR_WELFARE = BASEURL + "cheshang/tenure_customer/updateCarW
  *  搜索保有客户数据
  */
 export const SELECT_BY_SEARCH = BASEURL + "cheshang/tenure_customer/selectBySearch";
+/**
+ *   商户是否在(浙商)白名单中查询
+ */
+export const IS_IN_WHITE_LIST = BASEURL + "v1/account.cz_bank/isInWhiteList";
+/**
+ *    from @dingnyonggang
+ *
+ *   生成资金账户
+ */
+export const ZS_GENERATE_E_ACCOUNT = BASEURL + "v1/account.cz_bank/accountBuild";
 
+/**
+ *    from @dingnyonggang
+ *
+ *   发送短信验证码
+ */
+export const ZS_SEND_SMS_CODE = BASEURL + "v1/account.cz_bank/sendSmsCode";
+/**
+ *    from @dingnyonggang
+ *
+ *   开户
+ */
+export const ZS_OPEN_ACCOUNT = BASEURL + "v1/account.cz_bank/customerAccountOpen";
+/**
+ *    from @dingnyonggang
+ *
+ *   根据银行卡号查询联行号
+ */
+export const ZS_PARSE_BANK = BASEURL + "v1/account.cz_bank/getBankNoByBankCard";
+/**
+ *    from @dingnyonggang
+ *
+ *   查询城市
+ */
+export const ZS_GET_CITY = BASEURL + "v1/bankRoute.query/findCity";
 
+/**
+ *  查询是否开启浙商银行可见
+ */
+export const ZS_BANK_IS_SHOW = BASEURL + "v1/account.cz_bank/zsBankIsShow";
+
+/**
+ *  from @dingnyonggang
+ *
+ *  浙商账户充值
+ */
+export const ZS_DEPOSIT = BASEURL + "v1/account.cz_bank/deposit";
+/**
+ *  from @dingnyonggang
+ *
+ *  浙商账户提现
+ */
+export const ZS_WITHDRAW = BASEURL + "v1/account.cz_bank/withdraw";
+/**
+ *  from @dingnyonggang
+ *
+ *  浙商账户流水
+ */
+export const ZS_WORTER_FLOW = BASEURL + "v2/user.account/payLog";
+/**
+ *  from @dingnyonggang
+ *
+ *  浙商账户修改银行预留手机号
+ */
+export const ZS_BANK_MODIFY_MOBILE = BASEURL + "v1/account.cz_bank/modifyMobile";
+/**
+ *  from @dingnyonggang
+ *
+ *   浙商账户修改绑定的银行卡号
+ */
+export const ZS_MODIFY_BANK_CARD = BASEURL + "v1/account.cz_bank/modifyAccountInfo";
+/**
+ *  from @dingnyonggang
+ *
+ *   浙商账户查询交易相关的限额信息，可取金额，可用金额
+ */
+export const ZS_QUOTA = BASEURL + "v1/account.cz_bank/getPaymentRelatedInfo";
+/**
+ *  from @dingnyonggang
+ *
+ *   浙商账户查询交易相关的限额信息，可取金额，可用金额
+ */
+export const ZS_FETCH_STATUS = BASEURL + "v1/user.account/getTransferRecordStatus";
+/**
+ *  from @dingnyonggang
+ *
+ *   判断当前时间是否在浙商银行的服务时间段内
+ */
+export const ZS_IN_SERVICE = BASEURL + "v1/account.cz_bank/isOutOfService";
+
+/**
+ *  from @dingnyonggang
+ *
+ *  查询大行信息（对公)
+ */
+export const ZS_HEAD_BANK = BASEURL + "v1/bankRoute.query/findSubBankNo";
+
+/**
+ *  from @dingnyonggang
+ *
+ *  查询支行信息（对公）
+ */
+export const ZS_SUB_BANK = BASEURL + "v1/bankRoute.query/findChildBankNo";
+
+/**
+ *   获取用户的账户详情(我的账户页面-卡片页  调用)
+ */
+export const GET_USER_ACCOUNT_DETAIL = BASEURL + "v1/user.account/getUserAccountDetail";
+/**
+ *   信托开户
+ */
+export const OPEN_PERSON_TRUST_ACCOUNT = BASEURL + "v1/account.zsyxt/openPersonAccount";
+/**
+ *   微众借据详情API(信托开户)
+ */
+export const AGREEMENT_LISTS = BASEURL + "v1/contract/agreementLists";
+/**
+ * 获取功能认证信息
+ */
+export const USER_IDENTITY_GET_INFO = BASEURL + V + "user.identity/getInfo";
+/**
+ * 添加个人认证申请
+ */
+export const PERSONCERTIFICATE = BASEURL + V + "user.identity/applyAuthUserInfo";//添加个人认证申请
+/**
+ *
+ * 添加企业认证申请
+ */
+export const ENTERPRISECERTIFICATE = BASEURL + V + "user.identity/applyEnterpriseInfo";//添加企业认证申请
+/**
+ *
+ * 注册(新)
+ */
+export const ZHUCE = BASEURL +  "v2/auth/register";//注册(新)
+/**
+ *
+ * 通过用户base_id,企业base_id 查看审核状态
+ */
+export const GETCHECKSTATUS = BASEURL + V + "user.identity/getCheckStatus";//通过用户base_id,企业base_id 查看审核状态
+/**
+ *
+ * 重新申请个人认证获取用户信息
+ */
+export const GETAPPLYAUTHUSERINFO = BASEURL + V + "user.identity/getApplyAuthUserInfo";//重新申请个人认证获取用户信息
+/**
+ *
+ * 重新申请企业认证获取企业信息
+ */
+export const GETAPPLYENTERPRISEINFO = BASEURL + V + "user.identity/getApplyEnterpriseInfo";//重新申请企业认证获取企业信息

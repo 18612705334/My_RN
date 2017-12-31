@@ -33,7 +33,7 @@ export default class WorkBenchItem extends PureComponent{
                         image = {item.image}
                         name = {item.name}
                         click = {()=>{
-                            this.props.callBack({name:item.componentName, component:item.component, params:{}})
+                            this.props.callBack({id:item.id,name:item.componentName, component:item.component, params:{}})
                         }}
                 />
             )

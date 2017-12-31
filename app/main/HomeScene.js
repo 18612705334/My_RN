@@ -230,11 +230,9 @@ export default class HomeScene extends BaseComponent {
 
         return (
             <TouchableOpacity
-                onPress={
-                    () => {
-                        this.props.callBack({name: 'CarInfoScene', conponent: CarInfoScene, params: {carID: data.id}})
-                    }
-                }
+                onPress={()=>{
+                    this.props.callBack({component:CarInfoScene, name:'CarInfoScene', params:{carID:data.id}})
+                }}
                 activeOpacity={.6}
                 style={styles.cell_touchable_container}
             >

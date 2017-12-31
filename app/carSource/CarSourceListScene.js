@@ -36,6 +36,9 @@ import StorageUtil from '../utils/StorageUtil';
 import * as CarDeployData from './carData/CarDeployData';
 
 
+import TextComponet  from './TestViewPage'
+
+
 let Pixel = new PixelUtil();
 let {width, height}  =  Dimensions.get('window');
 
@@ -281,6 +284,13 @@ export default  class CarSourceScene extends BaseComponent{
     }
 
     carCellOnPres = (item, sectionID, rowID) => {
+        //
+        // this.props.callBack({
+        //     component:TextComponet,
+        //     name:'TextComponet',
+        //     params:{}
+        // })
+
 
         this.props.callBack({
             component:CarInfoScene,
@@ -289,6 +299,7 @@ export default  class CarSourceScene extends BaseComponent{
                 carID:item.id
             }
         })
+
     }
 
     refreshingData = ()=>{

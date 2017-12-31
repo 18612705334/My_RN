@@ -20,6 +20,10 @@ import mine from '../main/MineScene'
 import search from '../carSource/CarSeekScene'
 import message from '../message/MessageListScene'
 import daily from '../message/dailyReminder/DailyReminderScene'
+import carInof from '../carSource/CarInfoScene'
+import carManage from '../carSource/CarMySourceScene'
+import publishCar from '../main/WorkBenchScene'
+
 
 export default class MyNavigator extends Component {
 
@@ -28,9 +32,10 @@ export default class MyNavigator extends Component {
             <Navigator
                 initialRoute={{
                      component: RootScene,
-                     name: 'RootScene',
-                    // component: daily,
-                    // name: 'daily'
+                    name: 'RootScene',
+                    //
+                    // component: publishCar,
+                    // name: 'WorkBenchScene',
 
                 }}
 

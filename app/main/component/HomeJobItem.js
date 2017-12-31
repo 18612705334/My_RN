@@ -74,6 +74,7 @@ export default class HomeJobItem extends PureComponent {
             <View
                 style={{
                     flexDirection: 'row',
+                    justifyContent:'space-around',
                     flexWrap:'wrap',
                     backgroundColor: 'white',
                     width: width,

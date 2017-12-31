@@ -58,14 +58,13 @@ export default class CarInfoNavigationView extends PureComponent{
         )
     }
 
-
 }
 
 const styles = StyleSheet.create({
 
     navigation: {
         height: Pixel.getTitlePixel(64),
-        backgroundColor: fontAndColor.COLORB0,
+        backgroundColor: fontAndColor.NAVI_BAR_COLOR,
         left: 0,
         right: 0,
         position: 'absolute',

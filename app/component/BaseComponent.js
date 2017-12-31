@@ -15,9 +15,11 @@ import {
 import PixelUtil from "../utils/PixelUtils";
 import * as fontAndColor from "../constant/FontAndColor";
 import MyButton from "./MyButton";
+
 const {width, height} = Dimensions.get('window');
 const Pixel = new PixelUtil();
 import ConsoleUtils from "../utils/ConsoleUtils";
+
 const Console = new ConsoleUtils();
 export default class BaseComponent extends Component {
     /**
@@ -56,9 +58,9 @@ export default class BaseComponent extends Component {
         }
     }
 
-    resetRoute = (mProps)=>{
+    resetRoute = (mProps) => {
         const navigator = this.props.navigator;
-        if (navigator){
+        if (navigator) {
             navigator.immediatelyResetRouteStack([{
                 ...mProps
             }])
@@ -164,6 +166,14 @@ export default class BaseComponent extends Component {
                 <MyButton {...this.allRefreshParams} />
             </View>
         } else {
+
+            if (this.renderNullView) {
+                return (
+                    this.renderNullView()
+
+                )
+            }
+
             view = <View style={{flex: 1, alignItems: 'center'}}>
                 <Image
                     style={{

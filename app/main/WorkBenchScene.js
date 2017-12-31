@@ -22,9 +22,10 @@ import NavigationView from '../component/NavigationBar';
 import GetPermissionUtil from '../utils/GetPermissionUtil';
 const GetPermission = new GetPermissionUtil();
 import WorkBenchItem from './component/WorkBenchItem';
-
-
-
+import StorageUtil from "../utils/StorageUtil";
+import {request} from '../utils/RequestUtil';
+import * as Urls from '../constant/appUrls';
+import * as StorageKeyNames from "../constant/storageKeyNames";
 
 export default  class WorkBenchScene extends BaseComponent{
 
@@ -99,10 +100,46 @@ export default  class WorkBenchScene extends BaseComponent{
         return(
             <WorkBenchItem
                 items = {data}
-                callBack = {this.props.callBack}
+                callBack = {(params)=>{
+                    this._checkAuthen(params)
+                }}
             />
         )
     }
+
+    _checkAuthen = (params)=>{
+
+        this.props.callBack(params);
+        return;
+
+
+        StorageUtil.mGetItem(StorageKeyNames.LOAN_SUBJECT, (data) => {
+            if (data.code == 1 && data.result != null) {
+                let datas = JSON.parse(data.result);
+                let maps = {
+                    enterprise_id: datas.company_base_id,
+                    function_id: params.id,
+                    type:'app'
+                };
+                request(Urls.USER_IDENTITY_GET_INFO, 'post', maps).then((response) => {
+
+
+
+                    if(response.mjson.data.auth == 1){
+                    }else{
+                        this.refs.authenmodal.changeShowType(...this.authenOptions[response.mjson.data.auth+'']);
+                    }
+                }, (error) => {
+                    this.props.showToast(error.msg);
+                });
+            } else {
+                this.props.showToast('获取企业信息失败');
+            }
+        });
+    }
+
+
+
 }
 
 

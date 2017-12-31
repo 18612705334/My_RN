@@ -52,7 +52,7 @@ export default class SendMsgCountDown extends Component{
                         countDown:false,
                         value:'获取验证码'
                     })
-                    this.countTime=TIME;
+                    this.endCountDown()
                 }else {
 
                     this.setState({

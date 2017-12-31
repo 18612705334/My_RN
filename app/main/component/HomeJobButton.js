@@ -34,10 +34,10 @@ export default class HomeJobButton extends PureComponent {
                 }}
                 activeOpacity={0.8}
                 style={{
-                    width: 67,
+                    width: 77,
                     height: 67,
-                    marginHorizontal: (width - Pixel.getPixel(67) * 4) / 8,
-                    marginVertical:10,
+                    marginHorizontal: (width - Pixel.getPixel(77) * 4) / 8,
+                    marginVertical:15,
                     alignItems: 'center',
 
                 }}>

@@ -38,6 +38,43 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		EA141AED1FB6F45F00899E20 /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA141AEC1FB6F44300899E20 /* libSQLite.a */; };
 		EA8A77521F949DCB00BB43F0 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8A77511F949DB600BB43F0 /* libRNImagePicker.a */; };
+		EA9703071FECD67F003C8598 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9703041FECD62F003C8598 /* libRNDeviceInfo.a */; };
+		EA9B04C71FF48C7E0083685E /* DYShareClass.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B04C61FF48C7E0083685E /* DYShareClass.m */; };
+		EA9B04E91FF495800083685E /* DYShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B04E81FF495800083685E /* DYShareViewController.m */; };
+		EA9B04EC1FF495FA0083685E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B04EB1FF495FA0083685E /* MBProgressHUD.m */; };
+		EA9B059C1FF763810083685E /* libvinTyper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9B059B1FF763800083685E /* libvinTyper.a */; };
+		EA9B061C1FF7677E0083685E /* 4D39F52BD46AC7CD8470.lic in Resources */ = {isa = PBXBuildFile; fileRef = EA9B05F01FF7677D0083685E /* 4D39F52BD46AC7CD8470.lic */; };
+		EA9B061D1FF7677E0083685E /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B05F21FF7677D0083685E /* CameraController.m */; };
+		EA9B061E1FF7677E0083685E /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B05F41FF7677D0083685E /* CustomCamera.m */; };
+		EA9B061F1FF7677E0083685E /* libSVehicleLicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9B05F51FF7677D0083685E /* libSVehicleLicense.a */; };
+		EA9B06201FF7677E0083685E /* libvinTyper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9B05F61FF7677D0083685E /* libvinTyper.a */; };
+		EA9B06211FF7677E0083685E /* OBDScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B05F81FF7677D0083685E /* OBDScanController.m */; };
+		EA9B06221FF7677E0083685E /* QrScan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B05FA1FF7677D0083685E /* QrScan.m */; };
+		EA9B06231FF7677E0083685E /* back_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B05FC1FF7677D0083685E /* back_btn@2x.png */; };
+		EA9B06241FF7677E0083685E /* back_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B05FD1FF7677D0083685E /* back_btn@3x.png */; };
+		EA9B06251FF7677E0083685E /* change_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B05FE1FF7677D0083685E /* change_btn@2x.png */; };
+		EA9B06261FF7677E0083685E /* change_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B05FF1FF7677D0083685E /* change_btn@3x.png */; };
+		EA9B06271FF7677E0083685E /* flash_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06001FF7677D0083685E /* flash_off@2x.png */; };
+		EA9B06281FF7677E0083685E /* flash_off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06011FF7677D0083685E /* flash_off@3x.png */; };
+		EA9B06291FF7677E0083685E /* flash_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06021FF7677D0083685E /* flash_on@2x.png */; };
+		EA9B062A1FF7677E0083685E /* flash_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06031FF7677D0083685E /* flash_on@3x.png */; };
+		EA9B062B1FF7677E0083685E /* Icon_SaoLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06041FF7677D0083685E /* Icon_SaoLine@2x.png */; };
+		EA9B062C1FF7677E0083685E /* Icon_SaoLineOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06051FF7677D0083685E /* Icon_SaoLineOn@2x.png */; };
+		EA9B062D1FF7677E0083685E /* Icon_SaoYiSao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06061FF7677D0083685E /* Icon_SaoYiSao@2x.png */; };
+		EA9B062E1FF7677E0083685E /* scan_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06071FF7677D0083685E /* scan_line@2x.png */; };
+		EA9B062F1FF7677E0083685E /* scan_line@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06081FF7677D0083685E /* scan_line@3x.png */; };
+		EA9B06301FF7677E0083685E /* shift.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B06091FF7677D0083685E /* shift.png */; };
+		EA9B06311FF7677E0083685E /* take_pic_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B060A1FF7677D0083685E /* take_pic_btn@2x.png */; };
+		EA9B06321FF7677E0083685E /* take_pic_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B060B1FF7677D0083685E /* take_pic_btn@3x.png */; };
+		EA9B06331FF7677E0083685E /* xiangjianniu.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B060C1FF7677D0083685E /* xiangjianniu.png */; };
+		EA9B06341FF7677E0083685E /* 相机蒙版.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B060D1FF7677D0083685E /* 相机蒙版.png */; };
+		EA9B06351FF7677E0083685E /* SystomTools.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B06101FF7677D0083685E /* SystomTools.m */; };
+		EA9B06361FF7677E0083685E /* TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B06121FF7677D0083685E /* TopView.m */; };
+		EA9B06371FF7677E0083685E /* VinCameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA9B06141FF7677D0083685E /* VinCameraViewController.mm */; };
+		EA9B06381FF7677E0083685E /* VinScan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B06161FF7677D0083685E /* VinScan.m */; };
+		EA9B06391FF7677E0083685E /* VLCameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA9B06191FF7677D0083685E /* VLCameraViewController.mm */; };
+		EA9B063A1FF7677E0083685E /* VLTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9B061B1FF7677D0083685E /* VLTopView.m */; };
+		EA9B06851FF8DE2B0083685E /* libRCTBEEPickerManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9B06681FF8DDB10083685E /* libRCTBEEPickerManager.a */; };
 		EAF1F6321F6E311600C4E2B4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF1F6311F6E311600C4E2B4 /* SystemConfiguration.framework */; };
 		EAF1F64D1F6E313A00C4E2B4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF1F64C1F6E313A00C4E2B4 /* CoreTelephony.framework */; };
 		EAF1F64F1F6E315A00C4E2B4 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF1F64E1F6E315A00C4E2B4 /* libsqlite3.0.tbd */; };
@@ -250,6 +287,27 @@
 			remoteGlobalIDString = 014A3B5C1C6CF33500B6D375;
 			remoteInfo = RNImagePicker;
 		};
+		EA9703031FECD62F003C8598 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9702FE1FECD62E003C8598 /* RNDeviceInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA5891D81BA9A9FC002B4DB2;
+			remoteInfo = RNDeviceInfo;
+		};
+		EA9703051FECD62F003C8598 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9702FE1FECD62E003C8598 /* RNDeviceInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E72EC1401F7ABB5A0001BC90;
+			remoteInfo = "RNDeviceInfo-tvOS";
+		};
+		EA9B06671FF8DDB10083685E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9B06601FF8DDB10083685E /* RCTBEEPickerManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17D41E551D7EE0CA0031415E;
+			remoteInfo = RCTBEEPickerManager;
+		};
 		EAF1F6A51F6E3BBE00C4E2B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EAF1F69F1F6E3BBE00C4E2B4 /* RCTWeChat.xcodeproj */;
@@ -293,6 +351,58 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		EA141ACB1FB6F44300899E20 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		EA8A77311F949DB500BB43F0 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
+		EA9702FE1FECD62E003C8598 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
+		EA9B04C51FF48C7E0083685E /* DYShareClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYShareClass.h; sourceTree = "<group>"; };
+		EA9B04C61FF48C7E0083685E /* DYShareClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYShareClass.m; sourceTree = "<group>"; };
+		EA9B04E71FF495800083685E /* DYShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYShareViewController.h; sourceTree = "<group>"; };
+		EA9B04E81FF495800083685E /* DYShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYShareViewController.m; sourceTree = "<group>"; };
+		EA9B04EA1FF495FA0083685E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		EA9B04EB1FF495FA0083685E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		EA9B059B1FF763800083685E /* libvinTyper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvinTyper.a; path = OCRSCancer/libvinTyper.a; sourceTree = "<group>"; };
+		EA9B05F01FF7677D0083685E /* 4D39F52BD46AC7CD8470.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4D39F52BD46AC7CD8470.lic; sourceTree = "<group>"; };
+		EA9B05F11FF7677D0083685E /* CameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraController.h; sourceTree = "<group>"; };
+		EA9B05F21FF7677D0083685E /* CameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraController.m; sourceTree = "<group>"; };
+		EA9B05F31FF7677D0083685E /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCamera.h; sourceTree = "<group>"; };
+		EA9B05F41FF7677D0083685E /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCamera.m; sourceTree = "<group>"; };
+		EA9B05F51FF7677D0083685E /* libSVehicleLicense.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSVehicleLicense.a; sourceTree = "<group>"; };
+		EA9B05F61FF7677D0083685E /* libvinTyper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libvinTyper.a; sourceTree = "<group>"; };
+		EA9B05F71FF7677D0083685E /* OBDScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBDScanController.h; sourceTree = "<group>"; };
+		EA9B05F81FF7677D0083685E /* OBDScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBDScanController.m; sourceTree = "<group>"; };
+		EA9B05F91FF7677D0083685E /* QrScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QrScan.h; sourceTree = "<group>"; };
+		EA9B05FA1FF7677D0083685E /* QrScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QrScan.m; sourceTree = "<group>"; };
+		EA9B05FC1FF7677D0083685E /* back_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_btn@2x.png"; sourceTree = "<group>"; };
+		EA9B05FD1FF7677D0083685E /* back_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_btn@3x.png"; sourceTree = "<group>"; };
+		EA9B05FE1FF7677D0083685E /* change_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "change_btn@2x.png"; sourceTree = "<group>"; };
+		EA9B05FF1FF7677D0083685E /* change_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "change_btn@3x.png"; sourceTree = "<group>"; };
+		EA9B06001FF7677D0083685E /* flash_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_off@2x.png"; sourceTree = "<group>"; };
+		EA9B06011FF7677D0083685E /* flash_off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_off@3x.png"; sourceTree = "<group>"; };
+		EA9B06021FF7677D0083685E /* flash_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_on@2x.png"; sourceTree = "<group>"; };
+		EA9B06031FF7677D0083685E /* flash_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_on@3x.png"; sourceTree = "<group>"; };
+		EA9B06041FF7677D0083685E /* Icon_SaoLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_SaoLine@2x.png"; sourceTree = "<group>"; };
+		EA9B06051FF7677D0083685E /* Icon_SaoLineOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_SaoLineOn@2x.png"; sourceTree = "<group>"; };
+		EA9B06061FF7677D0083685E /* Icon_SaoYiSao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_SaoYiSao@2x.png"; sourceTree = "<group>"; };
+		EA9B06071FF7677D0083685E /* scan_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_line@2x.png"; sourceTree = "<group>"; };
+		EA9B06081FF7677D0083685E /* scan_line@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_line@3x.png"; sourceTree = "<group>"; };
+		EA9B06091FF7677D0083685E /* shift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shift.png; sourceTree = "<group>"; };
+		EA9B060A1FF7677D0083685E /* take_pic_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "take_pic_btn@2x.png"; sourceTree = "<group>"; };
+		EA9B060B1FF7677D0083685E /* take_pic_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "take_pic_btn@3x.png"; sourceTree = "<group>"; };
+		EA9B060C1FF7677D0083685E /* xiangjianniu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiangjianniu.png; sourceTree = "<group>"; };
+		EA9B060D1FF7677D0083685E /* 相机蒙版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相机蒙版.png"; sourceTree = "<group>"; };
+		EA9B060E1FF7677D0083685E /* SVehicleLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVehicleLicense.h; sourceTree = "<group>"; };
+		EA9B060F1FF7677D0083685E /* SystomTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystomTools.h; sourceTree = "<group>"; };
+		EA9B06101FF7677D0083685E /* SystomTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystomTools.m; sourceTree = "<group>"; };
+		EA9B06111FF7677D0083685E /* TopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopView.h; sourceTree = "<group>"; };
+		EA9B06121FF7677D0083685E /* TopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopView.m; sourceTree = "<group>"; };
+		EA9B06131FF7677D0083685E /* VinCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VinCameraViewController.h; sourceTree = "<group>"; };
+		EA9B06141FF7677D0083685E /* VinCameraViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VinCameraViewController.mm; sourceTree = "<group>"; };
+		EA9B06151FF7677D0083685E /* VinScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VinScan.h; sourceTree = "<group>"; };
+		EA9B06161FF7677D0083685E /* VinScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VinScan.m; sourceTree = "<group>"; };
+		EA9B06171FF7677D0083685E /* vinTyper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vinTyper.h; sourceTree = "<group>"; };
+		EA9B06181FF7677D0083685E /* VLCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLCameraViewController.h; sourceTree = "<group>"; };
+		EA9B06191FF7677D0083685E /* VLCameraViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VLCameraViewController.mm; sourceTree = "<group>"; };
+		EA9B061A1FF7677D0083685E /* VLTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTopView.h; sourceTree = "<group>"; };
+		EA9B061B1FF7677D0083685E /* VLTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTopView.m; sourceTree = "<group>"; };
+		EA9B06601FF8DDB10083685E /* RCTBEEPickerManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBEEPickerManager.xcodeproj; path = "../node_modules/react-native-picker/ios/RCTBEEPickerManager.xcodeproj"; sourceTree = "<group>"; };
 		EAF1F6311F6E311600C4E2B4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EAF1F64C1F6E313A00C4E2B4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		EAF1F64E1F6E315A00C4E2B4 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -314,6 +424,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9B06851FF8DE2B0083685E /* libRCTBEEPickerManager.a in Frameworks */,
+				EA9B061F1FF7677E0083685E /* libSVehicleLicense.a in Frameworks */,
+				EA9B059C1FF763810083685E /* libvinTyper.a in Frameworks */,
+				EA9703071FECD67F003C8598 /* libRNDeviceInfo.a in Frameworks */,
 				EA141AED1FB6F45F00899E20 /* libSQLite.a in Frameworks */,
 				EA8A77521F949DCB00BB43F0 /* libRNImagePicker.a in Frameworks */,
 				EAF1F6AA1F6E592400C4E2B4 /* libRCTWeChat.a in Frameworks */,
@@ -324,6 +438,7 @@
 				EAF1F6321F6E311600C4E2B4 /* SystemConfiguration.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
+				EA9B06201FF7677E0083685E /* libvinTyper.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
@@ -441,6 +556,7 @@
 		13B07FAE1A68108700A75B9A /* My_Saas */ = {
 			isa = PBXGroup;
 			children = (
+				EA9B05EF1FF7677D0083685E /* OCRSCancer */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -448,6 +564,12 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				EA9B04EA1FF495FA0083685E /* MBProgressHUD.h */,
+				EA9B04EB1FF495FA0083685E /* MBProgressHUD.m */,
+				EA9B04C51FF48C7E0083685E /* DYShareClass.h */,
+				EA9B04C61FF48C7E0083685E /* DYShareClass.m */,
+				EA9B04E71FF495800083685E /* DYShareViewController.h */,
+				EA9B04E81FF495800083685E /* DYShareViewController.m */,
 			);
 			name = My_Saas;
 			sourceTree = "<group>";
@@ -488,6 +610,8 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				EA9B06601FF8DDB10083685E /* RCTBEEPickerManager.xcodeproj */,
+				EA9702FE1FECD62E003C8598 /* RNDeviceInfo.xcodeproj */,
 				EA141ACB1FB6F44300899E20 /* SQLite.xcodeproj */,
 				EA8A77311F949DB500BB43F0 /* RNImagePicker.xcodeproj */,
 				EAF1F69F1F6E3BBE00C4E2B4 /* RCTWeChat.xcodeproj */,
@@ -555,9 +679,85 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EA9702FF1FECD62E003C8598 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA9703041FECD62F003C8598 /* libRNDeviceInfo.a */,
+				EA9703061FECD62F003C8598 /* libRNDeviceInfo-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA9B05EF1FF7677D0083685E /* OCRSCancer */ = {
+			isa = PBXGroup;
+			children = (
+				EA9B05F01FF7677D0083685E /* 4D39F52BD46AC7CD8470.lic */,
+				EA9B05F11FF7677D0083685E /* CameraController.h */,
+				EA9B05F21FF7677D0083685E /* CameraController.m */,
+				EA9B05F31FF7677D0083685E /* CustomCamera.h */,
+				EA9B05F41FF7677D0083685E /* CustomCamera.m */,
+				EA9B05F51FF7677D0083685E /* libSVehicleLicense.a */,
+				EA9B05F61FF7677D0083685E /* libvinTyper.a */,
+				EA9B05F71FF7677D0083685E /* OBDScanController.h */,
+				EA9B05F81FF7677D0083685E /* OBDScanController.m */,
+				EA9B05F91FF7677D0083685E /* QrScan.h */,
+				EA9B05FA1FF7677D0083685E /* QrScan.m */,
+				EA9B05FB1FF7677D0083685E /* Resources */,
+				EA9B060E1FF7677D0083685E /* SVehicleLicense.h */,
+				EA9B060F1FF7677D0083685E /* SystomTools.h */,
+				EA9B06101FF7677D0083685E /* SystomTools.m */,
+				EA9B06111FF7677D0083685E /* TopView.h */,
+				EA9B06121FF7677D0083685E /* TopView.m */,
+				EA9B06131FF7677D0083685E /* VinCameraViewController.h */,
+				EA9B06141FF7677D0083685E /* VinCameraViewController.mm */,
+				EA9B06151FF7677D0083685E /* VinScan.h */,
+				EA9B06161FF7677D0083685E /* VinScan.m */,
+				EA9B06171FF7677D0083685E /* vinTyper.h */,
+				EA9B06181FF7677D0083685E /* VLCameraViewController.h */,
+				EA9B06191FF7677D0083685E /* VLCameraViewController.mm */,
+				EA9B061A1FF7677D0083685E /* VLTopView.h */,
+				EA9B061B1FF7677D0083685E /* VLTopView.m */,
+			);
+			path = OCRSCancer;
+			sourceTree = "<group>";
+		};
+		EA9B05FB1FF7677D0083685E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA9B05FC1FF7677D0083685E /* back_btn@2x.png */,
+				EA9B05FD1FF7677D0083685E /* back_btn@3x.png */,
+				EA9B05FE1FF7677D0083685E /* change_btn@2x.png */,
+				EA9B05FF1FF7677D0083685E /* change_btn@3x.png */,
+				EA9B06001FF7677D0083685E /* flash_off@2x.png */,
+				EA9B06011FF7677D0083685E /* flash_off@3x.png */,
+				EA9B06021FF7677D0083685E /* flash_on@2x.png */,
+				EA9B06031FF7677D0083685E /* flash_on@3x.png */,
+				EA9B06041FF7677D0083685E /* Icon_SaoLine@2x.png */,
+				EA9B06051FF7677D0083685E /* Icon_SaoLineOn@2x.png */,
+				EA9B06061FF7677D0083685E /* Icon_SaoYiSao@2x.png */,
+				EA9B06071FF7677D0083685E /* scan_line@2x.png */,
+				EA9B06081FF7677D0083685E /* scan_line@3x.png */,
+				EA9B06091FF7677D0083685E /* shift.png */,
+				EA9B060A1FF7677D0083685E /* take_pic_btn@2x.png */,
+				EA9B060B1FF7677D0083685E /* take_pic_btn@3x.png */,
+				EA9B060C1FF7677D0083685E /* xiangjianniu.png */,
+				EA9B060D1FF7677D0083685E /* 相机蒙版.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EA9B06611FF8DDB10083685E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA9B06681FF8DDB10083685E /* libRCTBEEPickerManager.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EAF1F6301F6E311600C4E2B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA9B059B1FF763800083685E /* libvinTyper.a */,
 				EAF1F6521F6E319000C4E2B4 /* libz.tbd */,
 				EAF1F6501F6E318000C4E2B4 /* libc++.tbd */,
 				EAF1F64E1F6E315A00C4E2B4 /* libsqlite3.0.tbd */,
@@ -700,6 +900,10 @@
 					ProjectRef = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
 				},
 				{
+					ProductGroup = EA9B06611FF8DDB10083685E /* Products */;
+					ProjectRef = EA9B06601FF8DDB10083685E /* RCTBEEPickerManager.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
 				},
@@ -738,6 +942,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = EA9702FF1FECD62E003C8598 /* Products */;
+					ProjectRef = EA9702FE1FECD62E003C8598 /* RNDeviceInfo.xcodeproj */;
 				},
 				{
 					ProductGroup = EA8A77321F949DB500BB43F0 /* Products */;
@@ -948,6 +1156,27 @@
 			remoteRef = EA8A77501F949DB600BB43F0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		EA9703041FECD62F003C8598 /* libRNDeviceInfo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNDeviceInfo.a;
+			remoteRef = EA9703031FECD62F003C8598 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EA9703061FECD62F003C8598 /* libRNDeviceInfo-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNDeviceInfo-tvOS.a";
+			remoteRef = EA9703051FECD62F003C8598 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EA9B06681FF8DDB10083685E /* libRCTBEEPickerManager.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTBEEPickerManager.a;
+			remoteRef = EA9B06671FF8DDB10083685E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EAF1F6A61F6E3BBE00C4E2B4 /* libRCTWeChat.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -976,8 +1205,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9B06231FF7677E0083685E /* back_btn@2x.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				EA9B06301FF7677E0083685E /* shift.png in Resources */,
+				EA9B062A1FF7677E0083685E /* flash_on@3x.png in Resources */,
+				EA9B06341FF7677E0083685E /* 相机蒙版.png in Resources */,
+				EA9B06331FF7677E0083685E /* xiangjianniu.png in Resources */,
+				EA9B06291FF7677E0083685E /* flash_on@2x.png in Resources */,
+				EA9B06241FF7677E0083685E /* back_btn@3x.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				EA9B06321FF7677E0083685E /* take_pic_btn@3x.png in Resources */,
+				EA9B06281FF7677E0083685E /* flash_off@3x.png in Resources */,
+				EA9B062D1FF7677E0083685E /* Icon_SaoYiSao@2x.png in Resources */,
+				EA9B06311FF7677E0083685E /* take_pic_btn@2x.png in Resources */,
+				EA9B061C1FF7677E0083685E /* 4D39F52BD46AC7CD8470.lic in Resources */,
+				EA9B062C1FF7677E0083685E /* Icon_SaoLineOn@2x.png in Resources */,
+				EA9B062F1FF7677E0083685E /* scan_line@3x.png in Resources */,
+				EA9B06271FF7677E0083685E /* flash_off@2x.png in Resources */,
+				EA9B062E1FF7677E0083685E /* scan_line@2x.png in Resources */,
+				EA9B06251FF7677E0083685E /* change_btn@2x.png in Resources */,
+				EA9B06261FF7677E0083685E /* change_btn@3x.png in Resources */,
+				EA9B062B1FF7677E0083685E /* Icon_SaoLine@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,7 +1291,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				EA9B061E1FF7677E0083685E /* CustomCamera.m in Sources */,
+				EA9B04E91FF495800083685E /* DYShareViewController.m in Sources */,
+				EA9B06371FF7677E0083685E /* VinCameraViewController.mm in Sources */,
+				EA9B06361FF7677E0083685E /* TopView.m in Sources */,
+				EA9B04EC1FF495FA0083685E /* MBProgressHUD.m in Sources */,
+				EA9B06351FF7677E0083685E /* SystomTools.m in Sources */,
+				EA9B06391FF7677E0083685E /* VLCameraViewController.mm in Sources */,
+				EA9B06221FF7677E0083685E /* QrScan.m in Sources */,
+				EA9B06211FF7677E0083685E /* OBDScanController.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				EA9B063A1FF7677E0083685E /* VLTopView.m in Sources */,
+				EA9B06381FF7677E0083685E /* VinScan.m in Sources */,
+				EA9B061D1FF7677E0083685E /* CameraController.m in Sources */,
+				EA9B04C71FF48C7E0083685E /* DYShareClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,7 +1402,12 @@
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = Y9REFNCU7C;
 				INFOPLIST_FILE = My_Saas/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCRSCancer",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1160,7 +1426,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y9REFNCU7C;
 				INFOPLIST_FILE = My_Saas/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OCRSCancer",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

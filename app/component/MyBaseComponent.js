@@ -46,8 +46,18 @@ export default class MyBaseComponent extends BaseComponent {
                 </View>
             )
         }
-        return (
-            this.renderView()
-        )
+
+        if (this.state.renderPlaceholderOnly == 'null') {
+            return(
+                this.renderNullView()
+            )
+        }
+        if (this.state.renderPlaceholderOnly == 'success') {
+            return (
+                this.renderView()
+            )
+        }
+
+
     }
 }
